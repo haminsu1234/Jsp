@@ -51,6 +51,20 @@
 
 
 %>
+				<script type="text/javascript">
+				
+				function test(){
+					
+					if(confirm('삭제하시겠습니까?')){
+						href="/Ch06/user5/5_delete.jsp?uid=< uservo.getUid() "
+					} else {
+						alter("삭제가 취소되었습니다")
+					}
+				}
+
+			
+				</script>
+
 
 <!DOCTYPE html>
 <html>
@@ -86,9 +100,13 @@
 				<td><%= uservo.getHp()  %></td>
 				<td>
 				<a href="/Ch06/user5/5_modify.jsp?uid=<%= uservo.getUid() %>">수정</a>
-					<a onclick="confirm('삭제하시겠습니까?')" href="/Ch06/user5/5_delete.jsp?uid=<%= uservo.getUid() %>" >
+				<a onclick =test()>삭제</a>
+				
+				
+				<!--  <a onclick="confirm('삭제하시겠습니까?')" href="/Ch06/user5/5_delete.jsp?uid=<%= uservo.getUid() %>" >
 					삭제
-					</a>
+				</a>
+				-->
 				</td>
 			
 			</tr>

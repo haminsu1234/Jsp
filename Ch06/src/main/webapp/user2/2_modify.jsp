@@ -1,3 +1,6 @@
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.naming.Context"%>
 <%@page import="vo.User2VO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mysql.cj.protocol.Resultset"%>
@@ -14,14 +17,18 @@
 	String age =request.getParameter("age");
 
 	
-	String host = "jdbc:mysql://localhost:3306/userdb";
-	String user = "root";
-	String pass = "1234";
+
 	User2VO vo =new User2VO();
 	try{
+		Context initCtx = new InitialContext();
+		Context ctx = (Context) initCtx.lookup("jdbc:comp/env");
 		
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn =DriverManager.getConnection(host,user,pass);
+		DataSource ds = (DataSource) ctx.lookup("jdbc/userdb");
+		Connection conn =ds.getConnection();
+		
+		
+		
+
 		PreparedStatement psmt =conn.prepareStatement("SELECT * FROM `USER2` WHERE UID =? ");
 		psmt.setString(1, uid);
 		

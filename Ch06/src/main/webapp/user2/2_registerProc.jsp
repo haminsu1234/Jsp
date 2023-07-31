@@ -1,3 +1,6 @@
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.naming.Context"%>
 <%@page import="java.sql.*"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <% 
@@ -7,14 +10,21 @@
 	String name = request.getParameter("name");
 	String hp = request.getParameter("hp");
 	String age = request.getParameter("age");
-	
-	String host ="jdbc:mysql://localhost:3306/userdb";
-	String user ="root";
-	String pass ="1234";
-	
+		
 	try{
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn=DriverManager.getConnection(host, user, pass);
+		//Class.forName("com.mysql.cj.jdbc.Driver");
+		//Connection conn=DriverManager.getConnection(host, user, pass);
+		
+		//JNDI 서비스 객체 생성
+		//context 개발환경
+		Context initCtx = new InitialContext();
+		Context ctx=(Context) initCtx.lookup("java:comp/env");//jndi 기본 환경 이름 
+		
+		//커넥션 풀에서 커넥션 가저오기
+		DataSource ds =(DataSource)ctx.lookup("jdbc/userdb");
+		Connection conn=ds.getConnection();
+		
+		
 		PreparedStatement psmt =conn.prepareStatement("INSERT INTO `user2` VALUES(?,?,?,?)");
 		
 		psmt.setString(1, uid);

@@ -1,3 +1,6 @@
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.naming.Context"%>
 <%@page import="java.sql.*"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <% 
@@ -7,14 +10,17 @@
 	String name = request.getParameter("name");
 	String hp = request.getParameter("hp");
 	String age = request.getParameter("age");
-	
-	String host ="jdbc:mysql://localhost:3306/userdb";
-	String user ="root";
-	String pass ="1234";
-	
+
+
 	try{
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn=DriverManager.getConnection(host, user, pass);
+
+		Context initCtx = new InitialContext();
+		Context ctx=(Context)initCtx.lookup("jdbc:comp/env");
+		
+		DataSource ds = (DataSource) ctx.lookup("jdbc/userdb");
+		Connection conn =ds.getConnection();
+		
+		
 		PreparedStatement psmt =conn.prepareStatement("UPDATE FROM `USER2` SET NAME=?,HP=?,AGE=? WHERE UID=?");		
 		
 		psmt.setString(1, name);

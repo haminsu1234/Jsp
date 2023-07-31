@@ -1,3 +1,7 @@
+<%@page import="javax.sql.DataSource"%>
+<%@page import="javax.naming.Context"%>
+<%@page import="javax.naming.InitialContext"%>
+<%@page import="javax.swing.text.AbstractDocument.Content"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -10,13 +14,16 @@
 	String hp=request.getParameter("hp");
 	String age=request.getParameter("age");
 
-	String host = "jdbc:mysql://localhost:3306/userdb";
-	String user = "root";
-	String pass = "1234";
+
 	
 	try{
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection conn =DriverManager.getConnection(host,user,pass);
+		Context initCtx = new InitialContext();
+		Context ctx=(Context)initCtx.lookup("jdbc:comp/env");
+		
+		DataSource ds = (DataSource) ctx.lookup("jdbc/userdb");
+		Connection conn =ds.getConnection();
+		
+		
 		PreparedStatement psmt=conn.prepareStatement("DELETE FROM 'USER2' WHERE UID=?");
 		psmt.setString(1, uid);
 		
