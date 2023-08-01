@@ -1,3 +1,4 @@
+<%@page import="javax.sql.DataSource"%>
 <%@page import="java.sql.*"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
@@ -8,8 +9,8 @@
 
 	String bcode =request.getParameter("bcode");
 	String bname =request.getParameter("bname");
-	String btype =request.getParameter("btype");
-	String bautor =request.getParameter("bautor");
+	String type =request.getParameter("type");
+	String autor =request.getParameter("autor");
 	String bmcom = request.getParameter("bmcom");
 	String bdate = request.getParameter("bdate");
 	
@@ -17,12 +18,15 @@
 	try{
 		Context initCtx = new InitialContext();
 		Context ctx= (Context)initCtx.lookup("java:comp/env");
-		Connection conn=(Connection)ctx.lookup("jdbc/userdb");
+		
+		DataSource ds=(DataSource)ctx.lookup("jdbc/userdb");
+		Connection conn=ds.getConnection();
+		
 		PreparedStatement psmt =conn.prepareStatement("INSERT INTO VALUE(?,?,?,?,?,?)");
 		psmt.setString(1,bcode);
 		psmt.setString(2,bname );
-		psmt.setString(3,btype);
-		psmt.setString(4,bautor);
+		psmt.setString(3,type);
+		psmt.setString(4,autor);
 		psmt.setString(5,bmcom);
 		psmt.setString(6,bdate);
 		
