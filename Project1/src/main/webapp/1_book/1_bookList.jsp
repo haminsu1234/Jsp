@@ -60,13 +60,12 @@
 	
 		<a href="/Procject1/1_book.jsp">처음화면으로</a>
 		<a href="/Procject1/1_book/1_bookRegister.jsp">도서등록</a>
-		<form action="/Procject1/1_book/1_bRegisterProc.jsp" method="post">
 			<table border="1">
 				<tr>
 					<th></th>
 				</tr>
 			</table>
-		</form>
+
 		
 	</body>
 </html>
