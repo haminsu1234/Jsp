@@ -1,35 +1,22 @@
+<%@page import="kr.co.jboard1.dto.UserDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글수정</title>
-    <link rel="stylesheet" href="./css/style.css">    
-</head>
-<body>
-    <div id="container">
-        <header>
-            <h3>Board System v1.0</h3>
-            <p>
-                OOO님 반갑습니다.
-                <a href="#" class="logout">[로그아웃]</a>
-            </p>
-        </header>
+<%@ include file ="./_header.jsp"%>
+
         <main>
             <section class="write">
                 <h3>글쓰기</h3>
                 <article>
-                    <form action="#">
+                    <form action="/Jboard1/proc/writeProc.jsp">
+                        <input type="hidden" name="writer" readonly value=<%=sessUser.getUid() %>><!--session 으로 처리하거나 파리미터를 받아 처리하거나 둘중하나인데 파라미터로 처리받을때 굳이 정보는 화면에 띄울필요는 없으므로 히든처리함  -->
                         <table>
                             <tr>
                                 <td>제목</td>
-                                <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
+                                <td><input type="text" name="title" required placeholder="제목을 입력하세요."/></td>
                             </tr>
                             <tr>
                                 <td>내용</td>
                                 <td>
-                                    <textarea name="content"></textarea>                                
+                                    <textarea name="content" required></textarea>                                
                                 </td>
                             </tr>
                             <tr>
@@ -38,16 +25,11 @@
                             </tr>
                         </table>
                         <div>
-                            <a href="#" class="btnCancel">취소</a>
+                            <a href="/Jboard1/list.jsp" class="btnCancel">취소</a>
                             <input type="submit"  class="btnWrite" value="작성완료">
                         </div>
                     </form>
                 </article>
             </section>
         </main>
-        <footer>
-            <p>ⓒcopyright 김철학.com</p>
-        </footer>
-    </div>
-</body>
-</html>
+<%@ include file ="./_footer.jsp"%>

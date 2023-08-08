@@ -1,47 +1,47 @@
+<%@page import="kr.co.jboard1.dto.ArticleDTO"%>
+<%@page import="kr.co.jboard1.dao.ArticleDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글보기</title>
-    <link rel="stylesheet" href="./css/style.css">    
-</head>
-<body>
-    <div id="container">
-        <header>
-            <h3>Board System v1.0</h3>
-            <p>
-                OOO님 반갑습니다.
-                <a href="#" class="logout">[로그아웃]</a>
-            </p>
-        </header>
+<%@ include file ="./_header.jsp" %>
+<%
+	
+	String no=request.getParameter("no");
+	
+
+	ArticleDTO vo =new ArticleDTO();
+	ArticleDAO dao = new ArticleDAO();
+	vo=dao.selectView(no);
+	
+
+
+
+%>
+
         <main>
             <section class="view">
                 <h3>글보기</h3>
                 <table>
                     <tr>
                         <td>제목</td>
-                        <td><input type="text" name="title" value="제목입니다." readonly/></td>
+                        <td><input type="text" name="title" value=<%= vo.getTitle() %> readonly/></td>
                     </tr>
                     <tr>
                         <td>첨부파일</td>
                         <td>
-                            <a href="#">2020년 상반기 매출자료.xls</a>
+                            <a href="#"><%= vo.getFile() %></a>
                             <span>7회 다운로드</span>
                         </td>
                     </tr>
                     <tr>
                         <td>내용</td>
                         <td>
-                            <textarea name="content" readonly>내용 샘플입니다.</textarea>
+                            <textarea name="content" readonly><%= vo.getContent() %></textarea>
                         </td>
                     </tr>
                 </table>
                 <div>
-                    <a href="#" class="btnDelete">삭제</a>
-                    <a href="#" class="btnModify">수정</a>
-                    <a href="#" class="btnList">목록</a>
+                    <a href="/Jboard1/proc/deleteProc.jsp?no=<%= no %>" class="btnDelete">삭제</a>
+                    <a href="/Jboard1/modify.jsp" class="btnModify">수정</a>
+                    <a href="/Jboard1/list.jsp" class="btnList">목록</a>
                 </div>  
                 
                 <!-- 댓글리스트 -->
@@ -77,9 +77,4 @@
     
             </section>
         </main>
-        <footer>
-            <p>ⓒcopyright 김철학.com</p>
-        </footer>
-    </div>
-</body>
-</html>
+<%@ include file ="./_footer.jsp"%>
