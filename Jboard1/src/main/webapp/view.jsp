@@ -1,73 +1,171 @@
+<%@page import="java.util.List"%>
+<%@page import="kr.co.jboard1.dto.ArticleDTO"%>
+<%@page import="kr.co.jboard1.dao.ArticleDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글보기</title>
-    <link rel="stylesheet" href="./css/style.css">    
-</head>
-<body>
-    <div id="container">
-        <header>
-            <h3>Board System v1.0</h3>
-            <p>
-                OOO님 반갑습니다.
-                <a href="#" class="logout">[로그아웃]</a>
-            </p>
-        </header>
+<%@ include file ="./_header.jsp" %>
+<%
+	
+	request.setCharacterEncoding("UTF-8");
+	String no=request.getParameter("no");
+	
+	ArticleDAO dao = new ArticleDAO();
+	ArticleDTO dto =dao.selectView(no);
+	dao.updateViewHit(no);
+	
+	//원글조회
+	//댓글조회
+	List<ArticleDTO> comments =dao.selectComments(no);
+
+%>
+<script>
+	$(function(){
+		// 댓글 수정
+		$('.mod').click(function(e){
+			e.preventDefault();
+			
+			const txt = $(this).text();
+			
+			if(txt == '수정'){
+				$(this).parent().prev().addClass('modi');
+				$(this).parent().prev().attr('readonly', false);
+				$(this).parent().prev().focus();
+				$(this).text('수정완료');
+				$(this).prev().show();
+			}else{
+				// 수정완료 클릭
+				if(confirm('정말수정하시겠습니까')){
+					$(this).closest('form').submit();
+				}
+				// 수정 데이터 전송
+				
+				
+				// 수정모드 해제 
+				$(this).parent().prev().removeClass('modi');
+				$(this).parent().prev().attr('readonly', true);
+				$(this).text('수정');
+				$(this).prev().hide();
+			}
+		});
+		
+		// 댓글 삭제
+		$('.del').click(function(){
+			const result = confirm('정말 삭제 하시겠습니까?');
+			
+			if(result){
+				return true;
+			}else{
+				return false;					
+			}
+		});
+		
+		// 댓글쓰기 취소
+		// Javascript 방식
+		const commentContent = document.querySelector('form > textarea[name=content]');
+		const btnCancel = document.querySelector('.btnCancel');
+		btnCancel.onclick = function(e){
+			e.preventDefault();
+			commentContent.value = '';
+		}
+		
+		// jQuery 방식
+		$('.btnCancel').click(function(e){
+			e.preventDefault();
+			$('form > textarea[name=content]').val('');
+		});
+		
+		/*let commentContent2 = document.querySelector('form > textarea[name=content]');
+		
+		$('.can').click(function(e){
+			e.preventDefault();
+			$('form > textarea[name=comment]').val(commentContent2);
+		});*/
+		
+		
+		
+		// 원글 삭제
+		const btnDelete = document.getElementsByClassName('btnDelete')[0];
+		btnDelete.onclick = function(){
+			if(confirm('정말 삭제 하시겠습니까?')){
+				return true;
+			}else{
+				return false;					
+			}
+		}
+		
+	
+	});
+</script>
+
         <main>
             <section class="view">
                 <h3>글보기</h3>
                 <table>
                     <tr>
                         <td>제목</td>
-                        <td><input type="text" name="title" value="제목입니다." readonly/></td>
+                        <td><input type="text" name="title" value=<%= dto.getTitle() %> readonly/></td>
                     </tr>
+                    <%if(dto.getFile() >0){ %>
                     <tr>
                         <td>첨부파일</td>
                         <td>
-                            <a href="#">2020년 상반기 매출자료.xls</a>
-                            <span>7회 다운로드</span>
+                            <a href="#"><%= dto.getFile() %></a>
+                            <span><%= dto.getHit() %>회 다운로드</span>
                         </td>
                     </tr>
+                    <%} %>
                     <tr>
                         <td>내용</td>
                         <td>
-                            <textarea name="content" readonly>내용 샘플입니다.</textarea>
+                            <textarea name="content" readonly><%= dto.getContent() %></textarea>
                         </td>
                     </tr>
                 </table>
                 <div>
-                    <a href="#" class="btnDelete">삭제</a>
-                    <a href="#" class="btnModify">수정</a>
-                    <a href="#" class="btnList">목록</a>
+                    <a href="/Jboard1/proc/deleteProc.jsp?no=<%= no %>" class="btnDelete">삭제</a>
+                    <a href="/Jboard1/modify.jsp?no=<%=no %>&title=<%= dto.getTitle() %>&content=<%= dto.getContent() %>" class="btnModify">수정</a>
+                    <a href="/Jboard1/list.jsp" class="btnList">목록</a>
                 </div>  
                 
                 <!-- 댓글리스트 -->
                 <section class="commentList">
                     <h3>댓글목록</h3>
-                    <article class="comment">
-                        <span>
-                            <span>길동이</span>
-                            <span>20-05-13</span>
-                        </span>
-                        <textarea name="comment" readonly>댓글 샘플입니다.</textarea>
-                        <div>
-                            <a href="#">삭제</a>
-                            <a href="#">수정</a>
-                        </div>
-                    </article>
-                    <p class="empty">
-                        등록된 댓글이 없습니다.
-                    </p>
+                    
+                    <% for(ArticleDTO comment : comments){ %>
+	                	<article class="comment">
+	                	<form action="/Jboard1/proc/commentModify.jsp" method="post">
+		                	<input type="hidden" name="no" value="<%= comment.getNo() %>">
+		                	<input type="hidden" name="parent" value="<%= comment.getParent() %>">	                    
+		                        <span>
+		                            <span><%= comment.getNick() %></span>
+		                            <span><%= comment.getRdate() %></span>
+		                        </span>
+		                        <textarea name="comment" readonly><%= comment.getContent() %></textarea>
+		                        <%if(sessUser.getUid().equals(comment.getWriter())){ %>
+			                        <div>
+			                            <a href="/Jboard1/proc/commentdelete.jsp?no=<%= comment.getNo() %>&parent=<%= comment.getParent() %>" class="del">삭제</a>
+			                            <a href="/Jboard1/view.jsp?no=<%= no %>" class="can ">취소</a>
+			                            <a href="/Jboard1/proc/commentModify.jsp" class="mod">수정</a>
+			                        </div>
+		                        <%} %>
+		                        </form>
+	                        </article>
+	                       
+	                    
+                    <% } %>
+                    <% if(comments.isEmpty()){ %>
+                    	<p class="empty">
+                        	등록된 댓글이 없습니다.
+                    	</p>
+                    <% } %>
                 </section>
     
                 <!-- 댓글입력폼 -->
                 <section class="commentForm">
                     <h3>댓글쓰기</h3>
-                    <form action="#">
-                        <textarea name="comment"></textarea>
+                    <form action="/Jboard1/proc/commentProc.jsp" method="post">
+                    	<input type="hidden" name="parent" value="<%= no %>">
+                    	<input type="hidden" name="writer" value="<%= sessUser.getUid()%>">
+                        <textarea name="content"></textarea>
                         <div>
                             <a href="#" class="btnCancel">취소</a>
                             <input type="submit" class="btnWrite" value="작성완료"/>
@@ -77,9 +175,4 @@
     
             </section>
         </main>
-        <footer>
-            <p>ⓒcopyright 김철학.com</p>
-        </footer>
-    </div>
-</body>
-</html>
+<%@ include file ="./_footer.jsp"%>

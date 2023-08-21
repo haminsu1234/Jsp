@@ -1,63 +1,40 @@
+<%@page import="kr.co.jboard1.dto.UserDTO"%>
+<%@page import="kr.co.jboard1.dao.UserDAO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="javax.sql.DataSource"%>
-<%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
+<%@page import="javax.naming.InitialContext"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-//아이디 비번 비번확인  이름 별명 이메일 휴대폰 까지 6개데이터 회원가입(user테이블에 입력되도록)
 	request.setCharacterEncoding("UTF-8");
 
-	String uid =request.getParameter("uid");
-	String pass1 =request.getParameter("pass1");
-	String pass2 =request.getParameter("pass2");
-	String name =request.getParameter("name");
-	String nick =request.getParameter("nick");
-	String email =request.getParameter("email");
-	String hp =request.getParameter("hp");
-	String zip =request.getParameter("zip");
-	String addr1 =request.getParameter("addr1");
-	String addr2 =request.getParameter("addr2");
-	String regip =request.getRemoteAddr();
-	
-	
-	
-	try{
-		Context initCtx = new InitialContext();
-		Context ctx = (Context) initCtx.lookup("java:comp/env");
-		
-		DataSource ds =(DataSource) ctx.lookup("jdbc/jboard");
-		Connection conn = ds.getConnection();
-		String sql ="INSERT INTO `USER` SET `uid`=?, `pass`=? , `name`=? ,`nick`=?, `email`=?, `hp`=?, `zip`=?, ";
-				sql+="`addr1`=?, `addr2`=?, `regip`=?, `regDate`=NOW()";
-		PreparedStatement psmt= conn.prepareStatement(sql);
-		
-		psmt.setString(1, uid);
-		psmt.setString(2, pass1);
-		psmt.setString(3, name);
-		psmt.setString(4, nick);
-		psmt.setString(5, email);
-		psmt.setString(6, hp);
-		psmt.setString(7, zip);
-		psmt.setString(8, addr1);
-		psmt.setString(9, addr2);
-		psmt.setString(10, regip);
+	String uid   = request.getParameter("uid");
+	String pass1 = request.getParameter("pass1");
+	String pass2 = request.getParameter("pass2"); //pass2는 pass1 확인용이라 굳이 받을 필요는 없긴하지만 나중에 사용할일이 있을지도 몰라 받아둠
+	String name  = request.getParameter("name");
+	String nick  = request.getParameter("nick");
+	String email = request.getParameter("email");
+	String hp    = request.getParameter("hp");
+	String zip   = request.getParameter("zip");
+	String addr1 = request.getParameter("addr1");
+	String addr2 = request.getParameter("addr2");
+ 	String regip = request.getRemoteAddr();
 
-		
-		psmt.executeUpdate();
-		
-		psmt.close();
-		conn.close();
-		
-		
-	}catch(Exception e){
-		e.printStackTrace();
-	}
-
+ 	UserDTO vo = new UserDTO();
+ 	vo.setUid(uid);
+ 	vo.setPass(pass1);
+ 	vo.setName(name);
+ 	vo.setNick(nick);
+ 	vo.setEmail(email);
+ 	vo.setHp(hp);
+ 	vo.setZip(zip);
+ 	vo.setAddr1(addr1);
+ 	vo.setAddr2(addr2);
+ 	vo.setRegip(regip);
+ 	
+	UserDAO.getInstance().insertUser(vo);
+	
 	response.sendRedirect("/Jboard1/user/login.jsp");
-
-
-
-
 
 %>

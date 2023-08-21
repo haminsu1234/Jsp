@@ -1,35 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글수정</title>
-    <link rel="stylesheet" href="./css/style.css">    
-</head>
-<body>
-    <div id="container">
-        <header>
-            <h3>Board System v1.0</h3>
-            <p>
-                OOO님 반갑습니다.
-                <a href="#" class="logout">[로그아웃]</a>
-            </p>
-        </header>
+<%@ include file ="./_header.jsp" %>
+<%
+
+	request.setCharacterEncoding("UTF-8");
+	String no =request.getParameter("no");
+	String title =request.getParameter("title");
+	String content =request.getParameter("content");
+	
+
+%>
+
         <main>
             <section class="modify">
                 <h3>글수정</h3>
                 <article>
-                    <form action="#">
+                    <form action="/Jboard1/proc/updateProc.jsp" method="post">
                         <table>
+                        	<input type="hidden" name="no" value="<%= no %>">
                             <tr>
                                 <td>제목</td>
-                                <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
+                                <td><input type="text" name="title" value=<%= title %> placeholder="제목을 입력하세요."/></td>
                             </tr>
                             <tr>
                                 <td>내용</td>
                                 <td>
-                                    <textarea name="content"></textarea>                                
+                                    <textarea name="content" vlaue=<%= content %>><%= content %></textarea>                                
                                 </td>
                             </tr>
                             <tr>
@@ -45,9 +40,4 @@
                 </article>
             </section>
         </main>
-        <footer>
-            <p>ⓒcopyright 김철학.com</p>
-        </footer>
-    </div>
-</body>
-</html>
+<%@ include file ="./_footer.jsp"%>
