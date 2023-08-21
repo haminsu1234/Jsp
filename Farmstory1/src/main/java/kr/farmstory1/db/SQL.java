@@ -35,6 +35,9 @@ public class SQL {
 	public static final String INSERT_COMMENT="INSERT INTO `Article` SET `PARENT`=?, "
 			+ "`CONTENT`=?, `WRITER`=?, `REGIP`=? , `RDATE`=NOW(), `USEYN`=''";
 	
+	public static final String INSERT_PRODUCT ="INSERT INTO `Product` set `type`=?, `pName`=?, `price`=?, `delivery`=?, `stock`=?"
+												+ " , `thumb1`=? ,`thumb2`=?, `thumb3`=?, `seller`=? , `etc`=? , `rdate`=NOW()";
+	
 	//UPDATE
 	public static final String UPDATE_ARTICLE="UPDATE `Article` SET `title`=?, content=? where `no`=?";
 	public static final String UPDATE_USEYN_COMMENT="UPDATE `Article` SET `useyn`='N' WHERE `no`=?";
