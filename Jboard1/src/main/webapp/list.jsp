@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 <%@page import="java.time.LocalDate"%>
+=======
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
 <%@page import="kr.co.jboard1.dto.ArticleDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.co.jboard1.dao.ArticleDAO"%>
@@ -84,7 +87,11 @@
                     그래서 그냥 게시물번호 자체는 받아오는게 좋은것같음 
                     -->
                     <td><a href="/Jboard1/view.jsp?no=<%= article.getNo() %>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]</td>
+<<<<<<< HEAD
                     <td><%= article.getWriter() %></td> <!--그냥 아이디로 찍을까 nick로 찍을까 생각해봤지만 uid는 잘못해서 털리면 좀 그래서 nick으로 그리고 uid로 작성자를 구분짓기에는 번거로울듯  -->nj
+=======
+                    <td><%= article.getWriter() %></td> <!--그냥 아이디로 찍을까 nick로 찍을까 생각해봤지만 uid는 잘못해서 털리면 좀 그래서 nick으로 그리고 uid로 작성자를 구분짓기에는 번거로울듯  -->
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
                     <td><%= article.getRdate() %></td>	<!-- writer 같은경우에 nick으로 출력하다보니 sql구문을 테이블두개를 inner join해서 조회 -->
                     <td><%= article.getHit() %></td>
                 </tr>

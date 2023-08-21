@@ -2,6 +2,7 @@ package kr.farmstory1.db;
 
 public class SQL {
 	//SELECT
+<<<<<<< HEAD
 	public static final String SELECT_TEMRS = "SELECT * FROM `Terms`";
 	public static final String SELECT_USER="SELECT * FROM `User` WHERE `UID`=? AND `PASS`=SHA2(?,256)";
 	
@@ -48,5 +49,14 @@ public class SQL {
 	
 	//DELETE
 	public static final String DELETE_ARTICLE="UPDATE `Article` set `useyn`='N' WHERE `no`=?";
+=======
+	public static final String SELECT_TEMRS = "SELECT * FROM `TERMS`";
+	public static final String SELECT_USER="SELECT * FROM `USER` WHERE `UID`=? AND `PASS`=SHA2(?,256)";
+	
+	//INSERT
+	public static final String INSERT_USER="INSERT INTO `USER` SET `UID`=? , `PASS`=SHA2(?,256), `NAME`=?"
+											+ ", `NICK`=? , `EMAIL`=?, `HP`=?, `ZIP`=?, `ADDR1`=?, `ADDR2`=?,`REGIP`=?,`REGDATE`=NOW() ";
+	
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
 	
 }

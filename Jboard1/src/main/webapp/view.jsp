@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 <%@page import="java.util.List"%>
+=======
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
 <%@page import="kr.co.jboard1.dto.ArticleDTO"%>
 <%@page import="kr.co.jboard1.dao.ArticleDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file ="./_header.jsp" %>
 <%
 	
+<<<<<<< HEAD
 	request.setCharacterEncoding("UTF-8");
 	String no=request.getParameter("no");
 	
@@ -95,6 +99,19 @@
 	
 	});
 </script>
+=======
+	String no=request.getParameter("no");
+	
+
+	ArticleDTO vo =new ArticleDTO();
+	ArticleDAO dao = new ArticleDAO();
+	vo=dao.selectView(no);
+	
+
+
+
+%>
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
 
         <main>
             <section class="view">
@@ -102,27 +119,44 @@
                 <table>
                     <tr>
                         <td>제목</td>
+<<<<<<< HEAD
                         <td><input type="text" name="title" value=<%= dto.getTitle() %> readonly/></td>
+=======
+                        <td><input type="text" name="title" value=<%= vo.getTitle() %> readonly/></td>
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
                     </tr>
                     <%if(dto.getFile() >0){ %>
                     <tr>
                         <td>첨부파일</td>
                         <td>
+<<<<<<< HEAD
                             <a href="#"><%= dto.getFile() %></a>
                             <span><%= dto.getHit() %>회 다운로드</span>
+=======
+                            <a href="#"><%= vo.getFile() %></a>
+                            <span>7회 다운로드</span>
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
                         </td>
                     </tr>
                     <%} %>
                     <tr>
                         <td>내용</td>
                         <td>
+<<<<<<< HEAD
                             <textarea name="content" readonly><%= dto.getContent() %></textarea>
+=======
+                            <textarea name="content" readonly><%= vo.getContent() %></textarea>
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
                         </td>
                     </tr>
                 </table>
                 <div>
                     <a href="/Jboard1/proc/deleteProc.jsp?no=<%= no %>" class="btnDelete">삭제</a>
+<<<<<<< HEAD
                     <a href="/Jboard1/modify.jsp?no=<%=no %>&title=<%= dto.getTitle() %>&content=<%= dto.getContent() %>" class="btnModify">수정</a>
+=======
+                    <a href="/Jboard1/modify.jsp" class="btnModify">수정</a>
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
                     <a href="/Jboard1/list.jsp" class="btnList">목록</a>
                 </div>  
                 

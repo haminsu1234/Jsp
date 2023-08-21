@@ -21,7 +21,11 @@
 	dto.setUid(uid);
 	dto.setPass(pass);
 	dto.setName(name);
+<<<<<<< HEAD
 	dto.setNick(nick);
+=======
+	dto.setNice(nick);
+>>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
 	dto.setEmail(email);
 	dto.setHp(hp);
 	dto.setZip(zip);
