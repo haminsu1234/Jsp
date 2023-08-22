@@ -1,6 +1,7 @@
 package kr.farmstory1.dto;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 public class ProductDTO {
@@ -24,11 +25,18 @@ public class ProductDTO {
 		this.path=path;
 	}
 	
+	public ProductDTO() {
+		
+	}
+	
 	public int getPno() {
 		return pno;
 	}
 	public void setPno(int pno) {
 		this.pno = pno;
+	}
+	public void setPno(String pno) {
+		this.pno = Integer.parseInt(pno);
 	}
 	public int getType() {
 		return type;
@@ -50,6 +58,12 @@ public class ProductDTO {
 	public int getPrice() {
 		return price;
 	}
+	
+	public String getPriceWithComma() {
+		
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(price);
+	}
 	public void setPrice(int price) {
 		this.price = price;
 	}
@@ -62,6 +76,12 @@ public class ProductDTO {
 	}
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
+	}
+	
+	public String getDeliveryWithComma() {
+		
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(delivery);
 	}
 	
 	public void setDelivery(String delivery) {
@@ -88,18 +108,29 @@ public class ProductDTO {
 		return thumb1;
 	}
 	public void setThumb1(String thumb1) {
+		this.thumb1 = thumb1;
+	}
+	
+	public void setThumb1ForRename(String thumb1) {
 		this.thumb1 = fileRename(thumb1);
 	}
 	public String getThumb2() {
 		return thumb2;
 	}
 	public void setThumb2(String thumb2) {
+		this.thumb2 = thumb2;
+	}
+	public void setThumb2ForRename(String thumb2) {
 		this.thumb2 = fileRename(thumb2);
 	}
 	public String getThumb3() {
 		return thumb3;
 	}
 	public void setThumb3(String thumb3) {
+		this.thumb3 = thumb3;
+	}
+	
+	public void setThumb3ForRename(String thumb3) {
 		this.thumb3 = fileRename(thumb3);
 	}
 	public String getSeller() {

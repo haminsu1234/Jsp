@@ -28,6 +28,18 @@ public class SQL {
 			+ " where `parent`=? and `useyn`=''";;
 	
 	public static final String SELECT_NEW_ARTICLE="SELECT `no`,`title`,`rdate` FROM `Article` where `cate`=? order by `no` DESC LIMIT ?";
+	
+	public static final String SELECT_PRODUCTS_ALL="SELECT * FROM `Product` WHERE `stock` >0  "
+													+ "limit ? ,10";
+	public static final String SELECT_PRODUCT="SELECT * FROM `Product` WHERE `pno`=? ";
+			
+	public static final String SELECT_PRODUCTS_TYPE="SELECT * FROM `Product` WHERE `stock` >0 and `type`=?"
+													+ "limit ? ,10";
+	
+	public static final String SELECT_COUNT_PRODUCT_TOTAL="SELECT COUNT(*) FROM `Product` where `stock`>0";
+	public static final String SELECT_COUNT_PRODUCTS_TYPE="SELECT COUNT(*) FROM `Product` where `stock`>0 AND `type`=?";
+	public static final String SELECT_COUNT_PRODUCTS_ALL="SELECT COUNT(*) FROM `Product` where `stock`>0";
+	
 	//INSERT
 	public static final String INSERT_USER="INSERT INTO `User` SET `uid`=? , `pass`=SHA2(?,256), `name`=?"
 											+ ", `nick`=? , `email`=?, `hp`=?, `zip`=?, `addr1`=?, `addr2`=?,`regip`=?,`regdate`=NOW() ";

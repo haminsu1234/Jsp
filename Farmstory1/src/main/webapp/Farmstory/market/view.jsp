@@ -1,6 +1,22 @@
+<%@page import="java.util.concurrent.CountDownLatch"%>
+<%@page import="kr.farmstory1.dto.ProductDTO"%>
+<%@page import="kr.farmstory1.dao.ProductDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
-
+<% 
+	request.setCharacterEncoding("UTF-8");
+	
+	String pno= request.getParameter("pno");
+	ProductDAO dao =new ProductDAO();
+	
+	ProductDTO dto = dao.selectProduct(pno);
+	
+	int total = 0;
+	int price=dto.getPrice();
+	
+	
+			
+%>
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
@@ -22,27 +38,27 @@
                     <!-- 내용 시작 -->
                     <h3>기본정보</h3>
                     <div class="basic">
-                        <img src="../images/market_item_thumb.jpg" alt="딸기 500g">
+                        <img src="/Farmstory1/Farmstory/thumb/<%= dto.getThumb2() %>" alt="딸기 500g">
 
                         <table border="0">                            
                             <tr>
                                 <td>상품명</td>
-                                <td>딸기 500g</td>
+                                <td><%= dto.getpName() %></td>
                             </tr>
                             <tr>
                                 <td>상품코드</td>
-                                <td>01</td>
+                                <td><%=dto.getPno() %></td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
                                 <td>
-                                    <span>5,000</span>원
+                                    <span><%= dto.getDeliveryWithComma() %></span>원
                                     <em>3만원 이상 무료배송</em>
                                 </td>
                             </tr>
                             <tr>
                                 <td>판매가격</td>
-                                <td>4,000원</td>
+                                <td><%= dto.getPriceWithComma() %>원</td>
                             </tr>
                             <tr>
                                 <td>구매수량</td>
@@ -52,7 +68,7 @@
                             </tr>
                             <tr>
                                 <td>합계</td>
-                                <td class="total">4,000원</td>
+                                <td class="total">원</td>
                             </tr>
 
                             <a href="./order.jsp" class="btnOrder">
@@ -63,7 +79,7 @@
                     </div>
                     <h3>상품설명</h3>
                     <div class="detail">
-                        <img src="../images/market_detail_sample.jpg" alt="">
+                        <img src="/Farmstory1/Farmstory/thumb/<%=dto.getThumb3() %>" alt="">
 
                     </div>
 

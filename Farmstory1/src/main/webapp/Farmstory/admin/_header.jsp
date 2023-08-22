@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@page import="kr.farmstory1.dto.UserDTO"%>
 <%@page import="com.mysql.cj.Session"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
