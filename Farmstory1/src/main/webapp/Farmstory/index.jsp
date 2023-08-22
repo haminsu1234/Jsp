@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <%@page import="kr.farmstory1.dto.ArticleDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.farmstory1.dao.ArticleDAO"%>
@@ -18,12 +18,8 @@
 
 %>
 
-       <main>
-=======
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./_header.jsp" %>
         <main>
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
             <div class="slider">
                 <ul>
                     <li><img src="./images/main_slide_img1.jpg" alt="슬라이더1"></li>
@@ -49,7 +45,7 @@
                 <div>
                     <a href="#"><img src="./images/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
                     <img src="./images/main_latest1_img.jpg" alt="이미지"/>
-<<<<<<< HEAD
+
                     
                     <table border="0">
                     <%for(ArticleDTO lates :lates1){ %>
@@ -61,40 +57,11 @@
                     <% } %>
                     </table>
                     
-=======
-                    <table border="0">
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                    </table>
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
                 </div>
                 <div>
                     <a href="#"><img src="./images/main_latest2_tit.png" alt="귀농학교"/></a>
                     <img src="./images/main_latest2_img.jpg" alt="이미지"/>
-<<<<<<< HEAD
+
                     
                     <table border="0">
                     <%for(ArticleDTO lates :lates2){ %>
@@ -106,40 +73,12 @@
                      <% } %>
                     </table>
  
-=======
-                    <table border="0">
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                    </table>
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
                 </div>
                 <div>
                     <a href="#"><img src="./images/main_latest3_tit.png" alt="농작물 이야기"/></a>
                     <img src="./images/main_latest3_img.jpg" alt="이미지"/>
-<<<<<<< HEAD
+
                     
                     <table border="0">
                     <%for(ArticleDTO lates :lates3){ %>
@@ -151,35 +90,7 @@
                    <% } %>
                     </table>
                     
-=======
-                    <table border="0">
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                        <tr>
-                            <td>></td>
-                            <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                            <td>20-12-22</td>
-                        </tr>
-                    </table>
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
                 </div>
                 
             </div>
@@ -193,11 +104,8 @@
                         <p class="time">
                             평일: AM 09:00 ~ PM 06:00<br>
                             점심: PM 12:00 ~ PM 01:00<br>
-<<<<<<< HEAD
                             토, 일요일, 공휴일 휴무 
-=======
-                            토, 일요일, 공휴일 휴무
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
                         </p>
                     </div>
                     <div class="btns">
@@ -225,41 +133,29 @@
                         </ul>
                         <div id="tabs-1">
                             <ul class="txt">
-<<<<<<< HEAD
+
                             <%for(ArticleDTO lates : tabs1){ %>
                                 <li><a href="/Farmstory1/Farmstory/board/view.jsp?group=Community&cate=notice&no=<%= lates.getNo() %>">· <%= lates.getTitle() %> </a></li>
 							<% } %>
-=======
-                                <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
-                                <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
-                                <li><a href="#">· 홈페이지 오픈 기념 이벤트를 진행합니다.</a></li>
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
                             </ul>
                         </div>
                         <div id="tabs-2">
                             <ul class="txt">
-<<<<<<< HEAD
+
 							<%for(ArticleDTO lates : tabs2){ %>
                                 <li><a href="/Farmstory1/Farmstory/board/view.jsp?group=Community&cate=qnae&no=<%= lates.getNo() %>">· <%= lates.getTitle() %> </a></li>
 							<% } %>
-=======
-                                <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
-                                <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
-                                <li><a href="#">· 홈페이지 이용 관련 불편사항을 들려주세요.</a></li>
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
                             </ul>
                         </div>
                         <div id="tabs-3">
                             <ul class="txt">
-<<<<<<< HEAD
+
          					<%for(ArticleDTO lates : tabs3){ %>
                                 <li><a href="/Farmstory1/Farmstory/board/view.jsp?group=Community&cate=faq&no=<%= lates.getNo() %>">· <%= lates.getTitle() %> </a></li>
 							<% } %>
-=======
-                                <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
-                                <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
-                                <li><a href="#">· 홈페이지를 오픈하였습니다.</a></li>
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
                             </ul>
                         </div>
                     </div>

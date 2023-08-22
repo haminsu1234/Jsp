@@ -20,15 +20,11 @@ public class DBHelper {
 	public Connection getConnection() {
 		
 		try {
-<<<<<<< HEAD
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Context ctx =(Context) new InitialContext().lookup("java:comp/env");
 			DataSource ds =(DataSource) ctx.lookup("jdbc/Farmstory");
-=======
-			Context ctx =(Context) new InitialContext().lookup("java:comp/env");
-			DataSource ds =(DataSource) ctx.lookup("jdbc/farmstory");
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
-			
+		
 			conn=ds.getConnection();
 		}catch (Exception e) {
 			e.printStackTrace();

@@ -1,9 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file ="./_header.jsp" %>
-<<<<<<< HEAD
-=======
-        </header>
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
         <main>
             <aside>
                 <h3>주요기능</h3>

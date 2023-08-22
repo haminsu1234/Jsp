@@ -73,7 +73,7 @@ public class UserDAO extends DBHelper {
 		return dto;
 	}
 	
-<<<<<<< HEAD
+
 	public int selectCountUid(String uid) {
 		int result=0;
 		try {
@@ -149,8 +149,7 @@ public class UserDAO extends DBHelper {
 		return result;
 	}
 	
-=======
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
 	public TermsDTO termsUser() {
 		TermsDTO dto =new TermsDTO();
 		try {
