@@ -1,13 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
-<<<<<<< HEAD
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="/Jboard1/js/zipcode.js"></script>
+    <script src="Farmstory1/Farmstory/user/js/zipcode.js"></script>
 <script src="/Farmstory1/Farmstory/user/js/validation.js"></script>
 <script src="/Farmstory1/Farmstory/user/js/checkUser.js"></script>
-=======
->>>>>>> e3757f69da9b7b02913c348d742788c031e0c640
+
 <div id="user">
       <section class="register">
         <form id="formUser" action="/Farmstory1/Farmstory/user/registerProc.jsp" method="post">

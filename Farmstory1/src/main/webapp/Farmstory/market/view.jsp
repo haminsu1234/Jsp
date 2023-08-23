@@ -12,11 +12,63 @@
 	ProductDTO dto = dao.selectProduct(pno);
 	
 	int total = 0;
-	int price=dto.getPrice();
+	int price=dto.getPrice()+dto.getDelivery();
 	
 	
 			
 %>
+<script>
+	
+	const price =<%= dto.getPrice()%>
+	const delivery=<%= dto.getDelivery()%>
+	$(function(){
+		$('input[name=count]').change(function(){
+			console.log('change!!');
+			var count= document.getElementsByName("count")[0].value;
+			let total=price*count
+			let finalPrice=total+delivery;
+			
+			$('input[name=count]').val(count);
+			$('input[name=total]').val(total);
+			$('input[name=final]').val(finalPrice);
+			$('.total').text(total.toLocaleString()+'원')
+			console.log(total);
+			})
+		
+	
+	
+		//주문하기
+		$('.btnOrder').click(function(e){
+			e.preventDefault();
+			
+			$('#formOrder').submit();
+		
+		
+		
+		
+		
+		})
+	
+	
+	
+	
+	
+	
+	
+	})
+
+	
+
+	//var price= document.getElementsByName("price")[0].value;
+	//var delivery= document.getElementsByName("delivery")[0].value;
+	
+	
+	//function countvalue(){
+	//	var count= document.getElementsByName("count")[0].value();
+	//	var total=(price*count)+delivery
+	//}
+
+</script>
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
@@ -52,30 +104,53 @@
                             <tr>
                                 <td>배송비</td>
                                 <td>
+                                    <%if(dto.getDelivery()>0 ){ %>
                                     <span><%= dto.getDeliveryWithComma() %></span>원
-                                    <em>3만원 이상 무료배송</em>
+	                                <em>3만원 이상 무료배송</em>
+	                                <%}else{ %>
+	                                <span>배송비 무로</span>
+	                                <%} %>
+                                    
                                 </td>
                             </tr>
                             <tr>
                                 <td>판매가격</td>
                                 <td><%= dto.getPriceWithComma() %>원</td>
+
+
                             </tr>
+ 
                             <tr>
                                 <td>구매수량</td>
                                 <td>
-                                    <input type="number" name="count" min="1" value="1">
+                                    <input type="number" name="count"  min="1" value="1">
                                 </td>
                             </tr>
+
                             <tr>
                                 <td>합계</td>
-                                <td class="total">원</td>
+                           
+                                <td class="total"><%= dto.getPriceWithComma() %>원</td>
+                             
                             </tr>
 
-                            <a href="./order.jsp" class="btnOrder">
-                                <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
-                            </a>
+
 
                         </table>
+                        <form id="formOrder"action="/Farmstory1/Farmstory/market/order.jsp" method="post">
+                        	<input type="hidden" name="thumb2" value="<%= dto.getThumb2() %>" >
+                        	<input type="hidden" name="pName" value="<%= dto.getpName() %>" >
+                        	<input type="hidden" name="pNo" value="<%= dto.getPno() %>" >
+                        	<input type="hidden" name="delivery" value="<%= dto.getDelivery() %>" >
+                        	<input type="hidden" name="price" value="<%= dto.getPrice() %>" >
+                        	<input type="hidden" name="count" value="1">
+                        	<input type="hidden" name="total" value="<%=dto.getPrice()%>">
+                        	<input type="hidden" name="final" value="<%=dto.getPrice()+dto.getDelivery()%>">
+                        
+                        </form>
+                        <a href="#" class="btnOrder">
+                            <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
+                        </a>
                     </div>
                     <h3>상품설명</h3>
                     <div class="detail">
