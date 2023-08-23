@@ -4,6 +4,13 @@ public class OrderDTO {
 	
 	private int orderno;
 	private int orderproduct;
+	private String ordereceiver;
+	public String getOrdereceiver() {
+		return ordereceiver;
+	}
+	public void setOrdereceiver(String ordereceiver) {
+		this.ordereceiver = ordereceiver;
+	}
 	private int ordercount;
 	private int orderdelivery;
 	private int orderprice;

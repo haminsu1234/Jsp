@@ -55,6 +55,7 @@ public class SQL {
 											+ "`orderhp`=?,`orderzip`=?,`orderaddr1`=?,`orderaddr2`=?,"
 											+ "`orderetc`=?,"
 											+ "`orderuser`=?,"
+											+ "`orderreceiver`=?,"
 											+ "`orderdate`=NOW()";
 	
 	//UPDATE

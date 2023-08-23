@@ -24,6 +24,7 @@ public class OrderDAO extends DBHelper {
 			psmt.setString(9, dto.getOrderaddr2());
 			psmt.setString(10, dto.getOrderetc());
 			psmt.setString(11, dto.getOrderuser());
+			psmt.setString(12, dto.getOrdereceiver());
 		
 			psmt.executeUpdate();
 			

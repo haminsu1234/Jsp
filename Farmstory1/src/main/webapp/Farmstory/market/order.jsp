@@ -109,11 +109,11 @@
                         	<input type="hidden" name="finalPrice" value="<%= finalPrice%>">
                         	<input type="hidden" name="count" value="<%= count%>">
                         	<input type="hidden" name="pNo" value="<%= pNo%>">
-                        
+                        	<input type="hidden" name="buyer" value="<%= sessUser.getUid()%>">
                         	
                             <tr>
                                 <td>받는분</td>
-                                <td><input type="text" name="buyer" value="<%= sessUser.getName()%>"></td>
+                                <td><input type="text" name="receiver" ></td>
                             </tr>
                             <tr>
                                 <td>휴대폰</td>
