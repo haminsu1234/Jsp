@@ -1,3 +1,4 @@
+<%@page import="kr.farmstory1.db.Utils"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
@@ -30,7 +31,7 @@
 			e.preventDefault();
 			$('#formOrder').submit();
 			
-		})
+		})//btnbuy end
 		
 		$('#btnShopping').click(function(e){
 			e.preventDefault();
@@ -40,12 +41,13 @@
 			}
 				
 			
-		})
+		})//btnShopping end
+		
 		$('#btnZip').click(function(e){
 			e.preventDefault();
 			
-		})
-	})
+		})//btnZip end
+	})//jQuery end
 
 
 </script>
@@ -84,11 +86,11 @@
                             </tr>
                             <tr>
                                 <td>배송비</td>
-                                <td class="delivery"><%=delivery %>원</td>
+                                <td class="delivery"><%= Utils.comma(delivery) %>원</td>
                             </tr>
                             <tr>
                                 <td>판매가격</td>
-                                <td><%= price %>원</td>
+                                <td><%= Utils.comma(price) %>원</td>
                             </tr>
                             <tr>
                                 <td>구매수량</td>
@@ -96,7 +98,7 @@
                             </tr>
                             <tr>
                                 <td>합계</td>
-                                <td class="total"><%=finalPrice %>원</td>
+                                <td class="total"><%= Utils.comma(finalPrice) %>원</td>
                             </tr>
                         </table>
                     </div>

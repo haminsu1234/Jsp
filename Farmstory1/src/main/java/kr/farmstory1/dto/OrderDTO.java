@@ -4,12 +4,12 @@ public class OrderDTO {
 	
 	private int orderno;
 	private int orderproduct;
-	private String ordereceiver;
-	public String getOrdereceiver() {
-		return ordereceiver;
+	private String orderreceiver;
+	public String getOrderreceiver() {
+		return orderreceiver;
 	}
-	public void setOrdereceiver(String ordereceiver) {
-		this.ordereceiver = ordereceiver;
+	public void setOrderreceiver(String orderreceiver) {
+		this.orderreceiver = orderreceiver;
 	}
 	private int ordercount;
 	private int orderdelivery;
@@ -22,11 +22,28 @@ public class OrderDTO {
 	private String orderzip;
 	private String orderaddr1;
 	private String orderaddr2;
+	private String pName;
+	private String thumb1;
 	
 	
 	
 	
 	
+	
+	
+	
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public String getThumb1() {
+		return thumb1;
+	}
+	public void setThumb1(String thumb1) {
+		this.thumb1 = thumb1;
+	}
 	public String getOrderhp() {
 		return orderhp;
 	}

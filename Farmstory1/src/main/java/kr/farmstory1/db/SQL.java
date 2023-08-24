@@ -20,6 +20,9 @@ public class SQL {
 	public static final String SELECT_COUNT_HP="SELECT COUNT(*) FROM `User` WHERE `hp`=?";
 	public static final String SELECT_COUNT_EMAIL="SELECT COUNT(*) FROM `User` WHERE `email`=?";
 	
+	public static final String SELECT_COUNT_ORDER= "SELECT COUNT(*) FROM `Order` WHERE `USEYN`='Y'";
+	public static final String SELECT_ORDER= "SELECT * FROM `Order` WHERE `orderno`=?";
+	
 	public static final String SELECT_VIEW="SELECT `title`,`content` FROM `Article` where `no`=? ";
 	
 	public static final String SELECT_COMMENTS="SELECT * FROM `Article` as a\r\n"
@@ -39,6 +42,12 @@ public class SQL {
 	public static final String SELECT_COUNT_PRODUCT_TOTAL="SELECT COUNT(*) FROM `Product` where `stock`>0";
 	public static final String SELECT_COUNT_PRODUCTS_TYPE="SELECT COUNT(*) FROM `Product` where `stock`>0 AND `type`=?";
 	public static final String SELECT_COUNT_PRODUCTS_ALL="SELECT COUNT(*) FROM `Product` where `stock`>0";
+	
+	public static final String SELECT_ORDERS = "SELECT a.*,b.pName ,b.thumb1  from `Order` as a \r\n"
+												+ "join `Product` as b on a.orderproduct =b.pno"
+												+ " WHERE a.USEYN='Y'"
+												+ " order by `orderno` DESC"
+												+ " limit ? ,10";
 	
 	//INSERT
 	public static final String INSERT_USER="INSERT INTO `User` SET `uid`=? , `pass`=SHA2(?,256), `name`=?"
@@ -61,6 +70,8 @@ public class SQL {
 	//UPDATE
 	public static final String UPDATE_ARTICLE="UPDATE `Article` SET `title`=?, content=? where `no`=?";
 	public static final String UPDATE_USEYN_COMMENT="UPDATE `Article` SET `useyn`='N' WHERE `no`=?";
+
+	public static final String UPDATE_USEYN_ORDER="UPDATE `Order` SET `useyn`='N' WHERE `orderno`=?";
 	
 	public static final String UPDATE_COMMENT ="UPDATE `Article` SET `content`=? where `no`=?";
 	

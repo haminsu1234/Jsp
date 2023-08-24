@@ -17,7 +17,7 @@
 	String ordertotal=request.getParameter("finalPrice");
 	String ordercount=request.getParameter("count");
 	String orderproduct=request.getParameter("pNo");
-	String ordereceiver=request.getParameter("receiver");
+	String orderreceiver=request.getParameter("receiver");
 
 
 	
@@ -35,7 +35,7 @@
 	dto.setOrdertotal(ordertotal);
 	dto.setOrdercount(ordercount);
 	dto.setOrderproduct(orderproduct);
-	dto.setOrdereceiver(ordereceiver);
+	dto.setOrderreceiver(orderreceiver);
 	OrderDAO dao =new OrderDAO();
 	
 	dao.insertOrder(dto);

@@ -1,5 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file ="./_header.jsp" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	
+	//페이지 관련 변수
+	int start=0;
+	int currentPage =1;
+	int total=0;
+	int allproduct=0;
+	int lastPageNum=0;
+	int pageGroupCurrent=1;
+	int pageGroupStart=1;
+	int pageGroupEnd=0;
+	int pageStartNum=0;
+
+%>
         <main>
 		<%@ include file ="./_aside.jsp" %>
             <section id="orderList">
