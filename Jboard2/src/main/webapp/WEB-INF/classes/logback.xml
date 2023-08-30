@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="NAME" value="Jboard2"/>
+	<!-- 개발용 -->
+	<!--  <property name="DIR" value="/logs"/>-->
+	<!-- 배포용 -->
+	<property name="DIR" value="/home/tomcat/logs"/>
+
+	<!-- 콘솔출력 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	
+	<!-- 롤링어펜더 -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${DIR}/${NAME}.log</file>
+    <append>true</append>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <fileNamePattern>logFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+      <!-- keep 30 days' worth of history capped at 3GB total size -->
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>3GB</totalSizeCap>
+
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+    </encoder>
+  </appender> 
+	<!-- turn OFF all logging (children can override) -->
+	<root level="debug">
+		 <appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</configuration>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Jboard2</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+    
+    <!-- MVC 보안설정 -->
+  <security-constraint>
+  	<display-name>Prohibit Model1</display-name>
+  	<web-resource-collection>
+  		<web-resource-name>secure page</web-resource-name>
+  		<url-pattern>*.jsp</url-pattern><!-- 모든jsp파일에 접근제한을검  단 진입페이지인 index에대해서는 허용을 해줘야함-->
+  	</web-resource-collection>
+  	<auth-constraint>
+  		<role-name>nobody</role-name>
+  	</auth-constraint>
+  </security-constraint>
+  
+  <security-constraint>
+  	<web-resource-collection>
+  		<web-resource-name>free page</web-resource-name>
+  		<url-pattern>/index.jsp</url-pattern><!-- index.jsp 만 접근하는게 허용됨--> 
+  	</web-resource-collection>
+  </security-constraint>
+  
+  <!-- 인코딩 필터 등록 -->
+  <filter>
+  	<filter-name>SetCharacterEncodingFilter</filter-name>
+  	<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+  	<init-param><!-- 클래스 생성자에 전달하는 값 > 인코딩 매개변수  -->
+  		<param-name>encoding</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
+
+
+  </filter>
+  <filter-mapping>
+  	<filter-name>SetCharacterEncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>
