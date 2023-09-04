@@ -11,22 +11,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-@WebServlet("/user/login.do")
-public class LoginController extends HttpServlet {
+@WebServlet("/user/register.do")
+public class RegisterController extends HttpServlet {
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1294748459753276074L;
+	private static final long serialVersionUID = -5076283254618512813L;
 	private Logger logger =LoggerFactory.getLogger(this.getClass());
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//Sring success = req.getParameter("success");
-		//req.setAttribute("success", success);
-
-				
-		RequestDispatcher dispatcher=req.getRequestDispatcher("/user/login.jsp");
+	
+		
+		
+		RequestDispatcher dispatcher=req.getRequestDispatcher("/user/register.jsp");
 		dispatcher.forward(req, resp);
+		
+		
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		
 	
+	}
 }

@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <title>팜스토리::로그인</title>    
     <link rel="stylesheet" href="../css/style.css"/>
+     <link rel="stylesheet" href="./css/style.css"/>
     <style>
         #user > img {
             display: block;
             margin: 20px auto;
         }
     </style>
+
 </head>
 <body>
     <div id="container">

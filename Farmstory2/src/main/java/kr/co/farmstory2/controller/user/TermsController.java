@@ -11,22 +11,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-@WebServlet("/user/login.do")
-public class LoginController extends HttpServlet {
+
+import kr.co.farmstory2.dto.TermsDTO;
+import kr.co.farmstory2.service.TermsService;
+
+
+@WebServlet("/user/terms.do")
+public class TermsController extends HttpServlet {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1294748459753276074L;
+	private static final long serialVersionUID = 7943035889996571784L;
 	private Logger logger =LoggerFactory.getLogger(this.getClass());
+	private TermsService service =TermsService.INSTANCE;
+	
+	
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//Sring success = req.getParameter("success");
-		//req.setAttribute("success", success);
-
-				
-		RequestDispatcher dispatcher=req.getRequestDispatcher("/user/login.jsp");
+	
+		TermsDTO dto=service.selectTerms();
+		req.setAttribute("dto", dto);
+		RequestDispatcher dispatcher=req.getRequestDispatcher("/user/terms.jsp");
 		dispatcher.forward(req, resp);
+		
 	}
-	
-	
 }
