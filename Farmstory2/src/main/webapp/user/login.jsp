@@ -1,6 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
-
+<script>
+	function checkCapsLock(event)  {
+		  if (event.getModifierState("CapsLock")) {
+		    document.getElementById("pass").innerText 
+		      = "Caps Lock이 켜져 있습니다."
+		  }else {
+		    document.getElementById("pass").innerText 
+		      = ""
+		  }//capslock on/off 구분용도 
+		}
+</script>
         <div id="user">
            <section class="login">
                 <form action="/Farmstory2/user/login.do" method="post">

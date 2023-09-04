@@ -17,7 +17,7 @@
     				alert('개인정보 취급방침에 동의하셔야 합니다')
     				return;
     			}else{
-    				location.href='/Farmstory1/Farmstory/user/register.jsp'
+    				location.href='/Farmstory2/user/register.do'
     			}
     			
     			
@@ -48,7 +48,7 @@
                 </table>
          <div>
              <a href="/Farmstory2/user/login.do" class="btnCancel">취소</a>
-             <a href="#" class="btnNext">다음</a>
+             <a href="/Farmstory2/user/register.do" class="btnNext">다음</a>
          </div>
 </section>
         </div>
