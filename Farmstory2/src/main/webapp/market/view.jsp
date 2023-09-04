@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./_header.jsp" %>
+<%@ include file="../_header.jsp" %>
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
@@ -54,7 +54,7 @@
                                 <td class="total">4,000원</td>
                             </tr>
 
-                            <a href="./order.html" class="btnOrder">
+                            <a href="${ctxPath}/market/order.do" class="btnOrder">
                                 <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
                             </a>
 
@@ -103,5 +103,5 @@
             </section>
 
         </div>
- <%@ include file="./_footer.jsp" %>     
+ <%@ include file="../_footer.jsp" %>     
         

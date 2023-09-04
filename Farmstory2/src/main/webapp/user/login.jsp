@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./_header.jsp" %>
+<%@ include file="../_header.jsp" %>
 <script>
 	function checkCapsLock(event)  {
 		  if (event.getModifierState("CapsLock")) {
@@ -10,30 +10,23 @@
 		      = ""
 		  }//capslock on/off 구분용도 
 		}
-	
-	const success= ${success};
 
-	if(success=='100'){
-		alert('아이디 비밀번호를 다시확인해주세요');
-	}else if(success=='201'){//로그아웃
-		alert('로그아웃되었습니다');
-	}
-	
+
 </script>
         <div id="user">
            <section class="login">
-                <form action="/Farmstory2/user/login.do" method="post">
+                <form action="${ctxPath}/user/login.do" method="post">
                 	<input type ="hidden" name="target" value=""/>
                 	<input type ="hidden" name="group" value=""/>
                 	<input type ="hidden" name="cate" value=""/>
                 	<input type ="hidden" name="no" value=""/>
                     <table border="0">
                         <tr>
-                            <td><img src="/Farmstory2/images/login_ico_id.png" alt="아이디"></td>
+                            <td><img src="${ctxPath}/images/login_ico_id.png" alt="아이디"></td>
                             <td><input type="text" name="uid" placeholder="아이디 입력"></td>
                         </tr>
                         <tr>
-                            <td><img src="/Farmstory2/images/login_ico_pw.png" alt="비밀번호"></td>
+                            <td><img src="${ctxPath}/images/login_ico_pw.png" alt="비밀번호"></td>
                             <td>
                             	<input type="password" name="pass" onkeyup="checkCapsLock(event)" placeholder="비밀번호 입력">
                             	<div id="pass"></div><!-- caps lock on/off 문구출력 -->
@@ -48,8 +41,8 @@
                     <p>
                         아직 회원이 아니시면 회원으로 가입하세요.
                     </p>
-                    <a href="/Farmstory2/user/terms.do">회원가입</a>
+                    <a href="${ctxPath}/user/terms.do">회원가입</a>
                 </div>
             </section>
         </div>
-<%@ include file="./_footer.jsp" %>
+<%@ include file="../_footer.jsp" %>

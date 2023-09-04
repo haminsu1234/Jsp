@@ -1,20 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./_header.jsp" %>
+<%@ include file="../_header.jsp" %>
        <div id="sub">
-            <div><img src="../images/sub_top_tit1.png" alt="INTRODUCTION"></div>
+            <div><img src="${ctxPath}/images/sub_top_tit1.png" alt="INTRODUCTION"></div>
             <section class="introduction">
                 <aside>
-                    <img src="../images/sub_aside_cate1_tit.png" alt="팜스토리 소개"/>
+                    <img src="${ctxPath}/images/sub_aside_cate1_tit.png" alt="팜스토리 소개"/>
 
                     <ul class="lnb">
-                        <li><a href="./hello.html">인사말</a></li>
-                        <li class="on"><a href="./direction.html">찾아오시는 길</a></li>
+                        <li><a href="${ctxPath}/introduction/hello.do">인사말</a></li>
+                        <li class="on"><a href="${ctxPath}/introduction/direction.do">찾아오시는 길</a></li>
                     </ul>
 
                 </aside>
                 <article>
                     <nav>
-                        <img src="../images/sub_nav_tit_cate1_tit2.png" alt="찾아오시는길"/>
+                        <img src="${ctxPath}/images/sub_nav_tit_cate1_tit2.png" alt="찾아오시는길"/>
                         <p>
                             HOME > 팜스토리소개 > <em>찾아오시는길</em>
                         </p>
@@ -53,4 +53,4 @@
             </section>
 
         </div>
- <%@ include file="./_footer.jsp" %>      
+ <%@ include file="../_footer.jsp" %>      

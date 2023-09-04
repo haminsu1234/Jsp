@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./_header.jsp" %>
+<%@ include file="../_header.jsp" %>
 
         <div id="sub">
-            <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
+            <div><img src="${ctxPath}/images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
                 <aside>
-                    <img src="../images/sub_aside_cate2_tit.png" alt="장보기"/>
+                    <img src="${ctxPath}/images/sub_aside_cate2_tit.png" alt="장보기"/>
 
                     <ul class="lnb">
                         <li class="on"><a href="./market.html">장보기</a></li>
@@ -13,7 +13,7 @@
                 </aside>
                 <article class="list">
                     <nav>
-                        <img src="../images/sub_nav_tit_cate2_tit1.png" alt="장보기"/>
+                        <img src="${ctxPath}/images/sub_nav_tit_cate2_tit1.png" alt="장보기"/>
                         <p>
                             HOME > 장보기 > <em>장보기</em>
                         </p>
@@ -29,7 +29,7 @@
                     <table border="0">
                         <tr>
                             <td>
-                                <a href="./view.html"><img src="../images/market_item1.jpg" alt="사과 500g"></a>
+                                <a href="${ctxPath}/market/view.do"><img src="${ctxPath}/images/market_item1.jpg" alt="사과 500g"></a>
                             </td>
                             <td>과일</td>
                             <td><a href="#">사과 500g</a></td>
@@ -109,5 +109,5 @@
             </section>
 
         </div>
- <%@ include file="./_footer.jsp" %>      
+ <%@ include file="../_footer.jsp" %>      
         

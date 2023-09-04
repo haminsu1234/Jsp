@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="./_header.jsp" %>
+<%@ include file="../_header.jsp" %>
         <div id="sub">
             <div><img src="../images/sub_top_tit3.png" alt="CROP TALK"></div>
             <section class="croptalk">
@@ -30,4 +30,4 @@
             </section>
 
         </div>
- <%@ include file="./_footer.jsp" %>         
+ <%@ include file="../_footer.jsp" %>         

@@ -60,7 +60,7 @@ $(function(){
 		};
 		
 		// 데이터 전송
-		$.get('/Farmstory2/user/checNick.do', jsonData, function(data){
+		$.get('/Farmstory2/user/checkNick.do', jsonData, function(data){
 			if(data.result2 >= 1){
 				$('.resultNick').css('color', 'red').text('이미 사용중인 별명 입니다.');
 				isNickOk = false;
