@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,19 +28,26 @@
 <body>
     <div id="container">
         <header>
-            <a href="./index.jsp" class="logo"><img src="./images/logo.png" alt="로고"/></a>
+            <a href="/Farmstory2/index.jsp" class="logo"><img src="/Farmstory2/images/logo.png" alt="로고"/></a>
             <p>
-                <a href="#">HOME |</a>
-                <a href="/Farmstory2/user/login.do">로그인 |</a>
-                <a href="/Farmstory2/user/register.do">회원가입 |</a>
+                <a href="/Farmstory2/index.jsp">HOME |</a>
+                <c:choose>
+                	<c:when test="${sessUser == null }">
+               			<a href="/Farmstory2/user/login.do">로그인 |</a>
+                		<a href="/Farmstory2/user/terms.do">회원가입 |</a>
+                	</c:when>
+                	<c:otherwise>
+                		<a href="/Farmstory2/user/logout.do">로그아웃 |</a>
+                	</c:otherwise>
+                </c:choose>
                 <a href="./admin/">관리자 |</a>
                 <a href="#">고객센터</a>
             </p>
-            <img src="./images/head_txt_img.png" alt="3만원 이상 무료배송"/>
+            <img src="/Farmstory2/images/head_txt_img.png" alt="3만원 이상 무료배송"/>
             
             <ul class="gnb">
                 <li><a href="/Farmstory2/introduction/hello.do">팜스토리소개</a></li>
-                <li><a href="/Farmstory2/market/list.do"><img src="./images/head_menu_badge.png" alt="30%"/>장보기</a></li>
+                <li><a href="/Farmstory2/market/list.do"><img src="/Farmstory2/images/head_menu_badge.png" alt="30%"/>장보기</a></li>
                 <li><a href="/Farmstory2/croptalk/story.do">농작물이야기</a></li>
                 <li><a href="/Farmstory2/event/event.do">이벤트</a></li>
                 <li><a href="/Farmstory2/community/notice.do">커뮤니티</a></li>
@@ -48,29 +56,29 @@
         <main>
             <div class="slider">
                 <ul>
-                    <li><img src="./images/main_slide_img1.jpg" alt="슬라이더1"></li>
-                    <li><img src="./images/main_slide_img2.jpg" alt="슬라이더2"></li>
-                    <li><img src="./images/main_slide_img3.jpg" alt="슬라이더3"></li>
+                    <li><img src="/Farmstory2/images/main_slide_img1.jpg" alt="슬라이더1"></li>
+                    <li><img src="/Farmstory2/images/main_slide_img2.jpg" alt="슬라이더2"></li>
+                    <li><img src="/Farmstory2/images/main_slide_img3.jpg" alt="슬라이더3"></li>
                 </ul>
 
-                <img src="./images/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리"/>
+                <img src="/Farmstory2/images/main_slide_img_tit.png" alt="사람과 자연을 사랑하는 팜스토리"/>
 
                 <div class="banner">
-                    <img src="./images/main_banner_txt.png" alt="GRAND OPEN"/>
-                    <img src="./images/main_banner_tit.png" alt="팜스토리 오픈기념 30% 할인 이벤트"/>
-                    <img src="./images/main_banner_img.png" alt="과일"/>
+                    <img src="/Farmstory2/images/main_banner_txt.png" alt="GRAND OPEN"/>
+                    <img src="/Farmstory2/images/main_banner_tit.png" alt="팜스토리 오픈기념 30% 할인 이벤트"/>
+                    <img src="/Farmstory2/images/main_banner_img.png" alt="과일"/>
                 </div>
             </div>
 
             <div class="quick">
-                <a href="#"><img src="./images/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
-                <a href="#"><img src="./images/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
+                <a href="#"><img src="/Farmstory2/images/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
+                <a href="#"><img src="/Farmstory2/images/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
             </div>
 
             <div class="latest">
                 <div>
-                    <a href="#"><img src="./images/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
-                    <img src="./images/main_latest1_img.jpg" alt="이미지"/>
+                    <a href="#"><img src="/Farmstory2/images/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
+                    <img src="/Farmstory2/images/main_latest1_img.jpg" alt="이미지"/>
                     <table border="0">
                         <tr>
                             <td>></td>
@@ -100,8 +108,8 @@
                     </table>
                 </div>
                 <div>
-                    <a href="#"><img src="./images/main_latest2_tit.png" alt="귀농학교"/></a>
-                    <img src="./images/main_latest2_img.jpg" alt="이미지"/>
+                    <a href="#"><img src="/Farmstory2/images/main_latest2_tit.png" alt="귀농학교"/></a>
+                    <img src="/Farmstory2/images/main_latest2_img.jpg" alt="이미지"/>
                     <table border="0">
                         <tr>
                             <td>></td>
@@ -131,8 +139,8 @@
                     </table>
                 </div>
                 <div>
-                    <a href="#"><img src="./images/main_latest3_tit.png" alt="농작물 이야기"/></a>
-                    <img src="./images/main_latest3_img.jpg" alt="이미지"/>
+                    <a href="#"><img src="/Farmstory2/images/main_latest3_tit.png" alt="농작물 이야기"/></a>
+                    <img src="/Farmstory2/images/main_latest3_img.jpg" alt="이미지"/>
                     <table border="0">
                         <tr>
                             <td>></td>
@@ -166,10 +174,10 @@
 
             <div class="info">
                 <div>
-                    <img src="./images/main_sub2_cs_tit.png" class="tit" alt="고객센터 안내"/>
+                    <img src="/Farmstory2/images/main_sub2_cs_tit.png" class="tit" alt="고객센터 안내"/>
                     <div class="tel">
-                        <img src="./images/main_sub2_cs_img.png" alt="">
-                        <img src="./images/main_sub2_cs_txt.png" alt="1666-777">
+                        <img src="/Farmstory2/images/main_sub2_cs_img.png" alt="">
+                        <img src="/Farmstory2/images/main_sub2_cs_txt.png" alt="1666-777">
                         <p class="time">
                             평일: AM 09:00 ~ PM 06:00<br>
                             점심: PM 12:00 ~ PM 01:00<br>
@@ -177,13 +185,13 @@
                         </p>
                     </div>
                     <div class="btns">
-                        <a href="#"><img src="./images/main_sub2_cs_bt1.png" alt="1:1 고객문의"></a>
-                        <a href="#"><img src="./images/main_sub2_cs_bt2.png" alt="자주묻는질문"></a>
-                        <a href="#"><img src="./images/main_sub2_cs_bt3.png" alt="배송조회"></a>
+                        <a href="#"><img src="/Farmstory2/images/main_sub2_cs_bt1.png" alt="1:1 고객문의"></a>
+                        <a href="#"><img src="/Farmstory2/images/main_sub2_cs_bt2.png" alt="자주묻는질문"></a>
+                        <a href="#"><img src="/Farmstory2/images/main_sub2_cs_bt3.png" alt="배송조회"></a>
                     </div>
                 </div>
                 <div>
-                    <img src="./images/main_sub2_account_tit.png" class="tit" alt="계좌안내"/>
+                    <img src="/Farmstory2/images/main_sub2_account_tit.png" class="tit" alt="계좌안내"/>
                     <p class="account">
                         기업은행 123-456789-01-01-012<br />
                         국민은행 01-1234-56789<br />
@@ -225,7 +233,7 @@
             </div>
         </main>
         <footer>
-            <img src="./images/footer_logo.png" alt="로고"/>
+            <img src="/Farmstory2/images/footer_logo.png" alt="로고"/>
             <p>
                 (주)팜스토리 / 사업자등록번호 123-45-67890 / 통신판매업신고 제 2013-팜스토리구-123호 / 벤처기업확인 서울지방중소기업청 제 012345678-9-01234호<br />
                 등록번호 팜스토리01234 (2013.04.01) / 발행인 : 홍길동<br />

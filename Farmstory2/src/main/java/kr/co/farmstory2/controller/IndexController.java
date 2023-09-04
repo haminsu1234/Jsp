@@ -8,13 +8,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-@WebServlet("/index.do")
+//@WebServlet("/index.do")
 public class IndexController extends HttpServlet {
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	//@Override
+	//protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher=req.getRequestDispatcher("/index.jsp");
-		dispatcher.forward(req, resp);
-	}
+		//RequestDispatcher dispatcher=req.getRequestDispatcher("/index.jsp");
+		//dispatcher.forward(req, resp);
+//	}
 }

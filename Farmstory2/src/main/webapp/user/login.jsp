@@ -10,6 +10,15 @@
 		      = ""
 		  }//capslock on/off 구분용도 
 		}
+	
+	const success= ${success};
+
+	if(success=='100'){
+		alert('아이디 비밀번호를 다시확인해주세요');
+	}else if(success=='201'){//로그아웃
+		alert('로그아웃되었습니다');
+	}
+	
 </script>
         <div id="user">
            <section class="login">

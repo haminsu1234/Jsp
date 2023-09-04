@@ -20,10 +20,12 @@ $(function(){
 		    			
 		const jsonData = {
 			"uid": uid
+			
 		};
+		console.log(jsonData);
 		
 		$.ajax({
-			url:'/Farmstory1/Farmstory/user/checkUser.jsp',
+			url:'/Farmstory2/user/checkUid.do',
 			type:'GET',
 			data: jsonData,
 			dataType:'json',
@@ -58,7 +60,7 @@ $(function(){
 		};
 		
 		// 데이터 전송
-		$.get('/Farmstory1/Farmstory/user/checkUser.jsp', jsonData, function(data){
+		$.get('/Farmstory2/user/checNick.do', jsonData, function(data){
 			if(data.result2 >= 1){
 				$('.resultNick').css('color', 'red').text('이미 사용중인 별명 입니다.');
 				isNickOk = false;
@@ -87,7 +89,7 @@ $(function(){
 
 		// 데이터 전송
 		const xhr = new XMLHttpRequest();
-		xhr.open('GET', '/Farmstory1/Farmstory/user/checkUser.jsp?email='+email);
+		xhr.open('GET', '/Farmstory2/user/checkEmail.do?email='+email);
 		xhr.send();
 		
 		// 응답 결과
@@ -124,7 +126,7 @@ $(function(){
 			return;
 		}
 		
-		const url = '/Farmstory1/Farmstory/user/checkUser.jsp?hp='+this.value;
+		const url = '/Farmstory2/user/checkHp.do?hp='+this.value;
 		
 		fetch(url)
 			.then(response => response.json())
