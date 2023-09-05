@@ -85,8 +85,9 @@ public class UserDAO extends DBHelper{
 		
 		return dto;
 	}
-	public List<UserDTO> selectUsers() {
+	public List<UserDTO> selectUsers(String start,String cate) {
 		return null;
+		
 	}
 	public void deleteUser() {}
 	public void updateUser(UserDTO dto) {}
@@ -181,6 +182,27 @@ public class UserDAO extends DBHelper{
 		}
 		
 		return result4;
+	}
+	
+	public int selectCountTotal(String cate) {
+		int total=0;
+		try {
+			conn=getConnection();
+			psmt=conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
+			psmt.setString(1, cate);
+			
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
+				total=rs.getInt(1);
+			}
+			
+			
+		} catch (Exception e) {
+			logger.error("selectCountTotal error : "+e.getMessage());
+		}
+		
+		return total;
 	}
 	
 	

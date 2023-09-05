@@ -88,9 +88,19 @@
 			}
 		})
 		
-		
+		 /* $('input[name=hp]').focusout(function(){
+
+            //입력데이터 받기
+            const resultHp = $("#resultHp").val();
+            console.log("resultHp = " + resultHp); // 값을 받아 오질 못함
+
+            if(!resultHp.match(reHp)){
+                $("#resultHp").css("color","red").text('유효한 휴대폰 번호가 아닙니다');
+                isHpOk = false;
+                return;
+            }*/
 	
-		//휴대폰검사
+		휴대폰검사
 		$('input[name=hp]').focusout(function(){
 			const hp =$('input[name=hp').val();
 			

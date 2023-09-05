@@ -7,9 +7,9 @@
                     <img src="../images/sub_aside_cate3_tit.png" alt="농작물이야기"/>
 
                     <ul class="lnb">
-                        <li><a href="./story.html">농작물이야기</a></li>
-                        <li class="on"><a href="./grow.html">텃밭가꾸기</a></li>
-                        <li><a href="./school.html">귀농학교</a></li>
+                        <li><a href="./story.do">농작물이야기</a></li>
+                        <li class="on"><a href="./grow.do">텃밭가꾸기</a></li>
+                        <li><a href="./school.do">귀농학교</a></li>
                     </ul>
 
                 </aside>

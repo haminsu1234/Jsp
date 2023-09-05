@@ -52,7 +52,7 @@ public class SQL {
 	//INSERT
 	public static final String INSERT_USER="INSERT INTO `User` SET `uid`=? , `pass`=SHA2(?,256), `name`=?"
 											+ ", `nick`=? , `email`=?, `hp`=?, `zip`=?, `addr1`=?, `addr2`=?,`regip`=?,`regdate`=NOW() ";
-	public static final String INSERT_ARTICLE="INSERT INTO `Article` SET `cate`=?, `title`=?,`content`=?,`writer`=?,`regip`=?,`rdate`=NOW(),`useyn`='Y'";
+	public static final String INSERT_ARTICLE="INSERT INTO `Article` SET `cate`=?, `title`=?,`content`=?,`writer`=?,`file`=?,`regip`=?,`rdate`=NOW(),`useyn`='Y'";
 
 	public static final String INSERT_COMMENT="INSERT INTO `Article` SET `PARENT`=?, "
 			+ "`CONTENT`=?, `WRITER`=?, `REGIP`=? , `RDATE`=NOW(), `USEYN`=''";
@@ -79,7 +79,17 @@ public class SQL {
 	
 	//DELETE
 	public static final String DELETE_ARTICLE="UPDATE `Article` set `useyn`='N' WHERE `no`=?";
-
+	
+	//new
+	public static final String SELECT_MAX_NO="SELECT MAX(`no`) FROM `Article`";
+	//FIEL
+	public static final String INSERT_FILE="INSERT INTO `File` SET "
+			+ "`ano`=?,"
+			+ "`oriName`=?,"
+			+ "`newName`=?,"
+			+ "`rdate`=NOW()";
+public static final String SELECT_FILE ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE ano=? ";
+public static final String SELECT_FILE2 ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE fno=? ";
 	
 	
 

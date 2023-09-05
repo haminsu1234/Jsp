@@ -10,10 +10,10 @@ public class ArticleDTO {
 	private String content;
 	private int file;
 	private int hit;
-	private int writer;
-	private int regip;
-	private int rdate;
-	private int useyn;
+	private String writer;
+	private String regip;
+	private String rdate;
+	private String useyn;
 	public int getNo() {
 		return no;
 	}
@@ -56,35 +56,46 @@ public class ArticleDTO {
 	public void setFile(int file) {
 		this.file = file;
 	}
+	
+	
 	public int getHit() {
 		return hit;
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public int getWriter() {
+
+	public String getWriter() {
 		return writer;
 	}
-	public void setWriter(int writer) {
+	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public int getRegip() {
+	public String getRegip() {
 		return regip;
 	}
-	public void setRegip(int regip) {
+	public void setRegip(String regip) {
 		this.regip = regip;
 	}
-	public int getRdate() {
+	public String getRdate() {
 		return rdate;
 	}
-	public void setRdate(int rdate) {
+	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
-	public int getUseyn() {
+	public String getUseyn() {
 		return useyn;
 	}
-	public void setUseyn(int useyn) {
+	public void setUseyn(String useyn) {
 		this.useyn = useyn;
+	}
+
+	public void setFile(String oName) {
+		if(oName !=null) {
+			this.file=1;
+		}else {
+			this.file=0;
+		}
 	}
 	
 	
