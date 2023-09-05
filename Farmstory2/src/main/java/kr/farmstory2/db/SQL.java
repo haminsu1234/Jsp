@@ -23,7 +23,7 @@ public class SQL {
 	public static final String SELECT_COUNT_ORDER= "SELECT COUNT(*) FROM `Order` WHERE `USEYN`='Y'";
 	public static final String SELECT_ORDER= "SELECT * FROM `Order` WHERE `orderno`=?";
 	
-	public static final String SELECT_VIEW="SELECT `title`,`content` FROM `Article` where `no`=? ";
+	public static final String SELECT_VIEW="SELECT `TITLE`,`CONTENT`,`no`,`file` FROM `Article` WHERE `NO`=? ";
 	
 	public static final String SELECT_COMMENTS="SELECT * FROM `Article` as a\r\n"
 			+ "inner JOIN `User` as b\r\n"
@@ -76,6 +76,7 @@ public class SQL {
 	public static final String UPDATE_COMMENT ="UPDATE `Article` SET `content`=? where `no`=?";
 	
 	public static final String UPDATE_VIEW_HIT="UPDATE `Article` SET `hit`=`hit`+1 where `no`=?";
+	public static final String UPDATE_COMMENT_NUM="UPDATE `Article` SET `comment`=`comment`+1 where `no`=?";
 	
 	//DELETE
 	public static final String DELETE_ARTICLE="UPDATE `Article` set `useyn`='N' WHERE `no`=?";

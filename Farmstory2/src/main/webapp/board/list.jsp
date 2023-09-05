@@ -19,9 +19,9 @@
 			           <c:forEach var ="articles" items="${requestScope.article }">  
 			            <tr>
 			                <td>${pageStartNum=pageStartNum-1}</td>
-			                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}">${articles.getTitle()}</a>&nbsp;[3]</td>
+			                <td><a href="/Farmstory2/board/view.do?group=${group}&cate=${cate}&no=${articles.getNo()}">${articles.getTitle()}</a>&nbsp;[${articles.getComment()}]</td>
 			                <td>${articles.getWriter() }</td>
-			                <td>${ articles.getRdate()}</td>
+			                <td>${articles.getRdate()}</td>
 			                <td>${articles.getHit()}</td>
 			            </tr>
 			           </c:forEach>

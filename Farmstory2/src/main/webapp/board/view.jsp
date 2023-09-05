@@ -1,62 +1,240 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <jsp:include page="./_aside${group}.jsp"/>
+<script>
+	$(function(){
+		
+		//댓글삭제
+		$(document).on('click','.remove',function(e){
+			e.preventDefault();
+			//alert('클릭!')
+			
+			const no=$(this).data('no');
+			const article=$(this).parent().parent();
+			
+			console.log('no : '+no);
+			
+			const jsonData={
+					"kind" : "REMOVE",
+					"no" : no
+			}
+			
+			console.log('jsonData = ' + jsonData)
+			$.ajax({
+				url:'/Farmstory2/board/delete.do',
+				type:'POST',
+				data: jsonData,
+				dataType : 'json',
+				success : function(data){
+			
+					if(data.result > 0){
+						alert('댓글삭제완료');
+					
+						article.remove();
+					}
+					
+				}
+			
+			})
+			
+			
+			
+		})
+		
+		
+		//댓글수정
+		$('.mod').click(function(e){
+			e.preventDefault();
+			
+			const txt = $(this).text();
+			
+			if(txt == '수정'){
+				$(this).parent().prev().addClass('modi');
+				$(this).parent().prev().attr('readonly', false);
+				$(this).parent().prev().focus();
+				$(this).text('수정완료');
+				$(this).prev().show();
+			}else{
+				// 수정완료 클릭
+				if(confirm('정말수정하시겠습니까')){
+					$(this).click(function(){
+						/*const parent=$('#formCommentList > input[name=parent]').val();
+						const content=$('#formCommentList > textarea[name=comment]').val();
+						const writer=$('#formCommentList > input[name=writer]').val();
+						
+						const jsonData ={
+								"content" : content,
+								"parent" : parent,
+								"writer" : writer
+						};*/
+
+						const no=$(this).data('no');
+						const comment =$('#formCommentList > textarea[name=comment]').val();
+						const writer =$('#formCommentList > input[name=writer]').val();
+						
+						const jsonData ={
+								"comment" : comment,
+								"no" : no,
+								"writer" : writer
+						};
+						
+						console.log('jsonData : '+jsonData);
+						
+						$.ajax({
+							url:'/Farmstory2/board/comment.do',
+							type:'GET',
+							data: jsonData,
+							dataType: 'json',
+							success : function(data){
+								
+								if(data.result > 0){
+									alert('수정완료');
+								}
+							}
+						})
+
+					})
+					
+				}
+				//수정데이터 전송
+				
+				// 수정모드 해제 
+				$(this).parent().prev().removeClass('modi');
+				$(this).parent().prev().attr('readonly', true);
+				$(this).text('수정');
+				$(this).prev().hide();
+			}
+		});
+		
+		
+		
+		//댓글입력
+		$('#btnComment').click(function(e){
+			e.preventDefault();
+			
+			const parent =$('#formComment > input[name=parent]').val();
+			const content =$('#formComment > textarea[name=content]').val();
+			const writer =$('#formComment > input[name=writer]').val();
+			
+			const jsonData ={
+					"content" : content,
+					"parent" : parent,
+					"writer" : writer
+			};
+			
+			console.log('jsonData : '+jsonData);
+			
+			$.ajax({
+				url:'/Farmstory2/board/comment.do',
+				type:'post',
+				data: jsonData,
+				dataType : 'json',
+				success : function(data){
+					console.log(data);
+					
+					if(data.result > 0){
+						alert('댓글이 등록 되었습니다.');
+						
+						// 동적 화면 생성
+						const dt = new Date();
+						const year  = dt.getFullYear().toString().substr(2, 4);
+						const month = dt.getMonth()+1;
+						const date  = dt.getDate();
+						const now   = year + "-" + month + "-" + date;
+						
+						const article = `<article>
+											<span class='nick'>${sessUser.nick}</span>
+											<span class='date'>`+now+`</span>
+											<p class='content'>`+content+`</p>
+											<div>
+												<a href='#' class='remove'>삭제</a>
+												<a href='#' class='modify'>수정</a>
+											</div>						
+										 </article>`;
+						
+					$('.commentList').append(article);	
+					}else{
+						alert('댓글등록에 실패했습니다')
+					}
+				}
+			})
+			
+		});
+})
+
+</script>
 			<section class="view">
 			    <h3>글보기</h3>
 			    <table>
 			        <tr>
 			            <td>제목</td>
-			            <td><input type="text" name="title" value="제목" readonly/></td>
+			            <td><input type="text" name="title" value="${view.getTitle() }" /></td>
 			        </tr>
+			       <c:if test="${view.getFile() > 0 }">
 			        <tr>
+			        	
 			            <td>첨부파일</td>
 			            <td>
-			                <a href="#">2020년 상반기 매출자료.xls</a>
-			                <span>7회 다운로드</span>
+			                <a href="/Farmstory2/upload/${file.getNewName()}" download="${file.getOriName()}">${file.getOriName()}</a>
+			                <span>${file.download }다운로드</span><!-- 다운로드 횟수 때문에 어짜피 도찐개찐일듯 -->
 			            </td>
+			            
 			        </tr>
+					</c:if>
 			        <tr>
 			            <td>내용</td>
 			            <td>
-			                <textarea name="content" readonly>내용</textarea>
+			                <textarea name="content" readonly>${view.getContent() }</textarea>
 			            </td>
 			        </tr>
 			    </table>
+			    <c:if test="${sessUser.getUid() ne null }">
 			    <div>
-			        <a href="#" class="btnDelete">삭제</a>
-			        <a href="#" class="btnModify">수정</a>
-			        <a href="#" class="btnList">목록</a>
+			        <a href="/Farmstory2/board/delete.do?group=${group}&cate=${cate}&no=${view.getNo()}" class="btn btnDelete">삭제</a>
+			        <a href="/Farmstory2/board/modify.do?group=${group}&cate=${cate}&no=${view.getNo()}" class="btn btnModify">수정</a>
+			    </c:if>  
+			        <a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}" class="btn btnList">목록</a>
 			    </div>
-			    
 			    <!-- 댓글리스트 -->
 			    <section class="commentList">
 			        <h3>댓글목록</h3>
+			        <c:forEach var="comment" items="${comments}">
+			        
 			        <article class="comment">
-			        	<form action="#" method="post">
-							<span>
-								<span>닉네임</span>
-								<span>23-09-04</span>
-							</span>
-							<textarea name="comment" readonly>댓글내용</textarea>
+			        <form id="formCommentList" action="#" method="get">
+			        		<input type="hidden" name="writer" value="${sessUser.getUid()}"/>
+                    		<input type="hidden" name="parent" value="${view.getNo()}"/>
+			                <span class="nick">${comment.nick}</span>
+			                <span class="date">${comment.rdate}</span>
+			                <textarea class="comment" name="comment" readonly>${comment.content}</textarea>  
 			             
+			             	<c:if test="${sessUser.getUid() eq comment.getWriter() }">
 							<div>
-								<a href="#" class="del">삭제</a>
-								<a href="./list.do?group=${group}&cate=${cate}" class="can">취소</a>
-								<a href="./modify.do?group=${group}&cate=${cate}" class="mod">수정</a>
-							</div>                
-			            </form>
+								<a href="#" class="del remove" data-no="${comment.no }">삭제</a>
+								<a href="/Farmstory2/list.do?group=${group}&cate=${cate}" class="can">취소</a>
+								<a href="#" class="mod modify" data-no="${comment.no }">수정</a>
+							</div>
+							</c:if>                    
+			         </form>
 			        </article>
+			       
+			        </c:forEach>
+			        <c:if test="${empty comments }">
 			        <p class="empty">등록된 댓글이 없습니다.</p>
+			    	</c:if>
 			    </section>
 			
 			    <!-- 댓글입력폼 -->
 			    <section class="commentForm">
 			        <h3>댓글쓰기</h3>
-			        <form action="#" method="post">
-			            <textarea name="content"></textarea>
+			        <form id="formComment" action="#" method="post">
+			            <input type="hidden" name="writer" value="${sessUser.getUid()}"/>
+                    	<input type="hidden" name="parent" value="${view.getNo()}"/>
+			            <textarea name="content" placeholder="댓글내용 입력"></textarea>
+			           	
 			            <div>
 			                <a href="#" class="btnCancel">취소</a>
-			                <input type="submit" class="btnWrite" value="작성완료"/>
+			                <input type="submit" id="btnComment" class="btn btnWrite" value="작성완료"/>
 			            </div>
 			        </form>
 			    </section>

@@ -4,16 +4,20 @@
 			<section class="modify">
 			    <h3>글수정</h3>
 			    <article>
-			        <form action="#" method="post">
+			        <form action="/Farmstory2/board/modify.do" method="post">
+			        <input type="hidden" name="no" value="${views.getNo()}"/>
+			        <input type="hidden" name="group" value="${group}"/>
+			        <input type="hidden" name="cate" value="${cate}"/>
+			        
 			            <table>
 			                <tr>
 			                    <td>제목</td>
-			                    <td><input type="text" name="title" value="제목" placeholder="제목을 입력하세요."/></td>
+			                    <td><input type="text" name="title" value="${views.getTitle() }" placeholder="제목을 입력하세요."/></td>
 			                </tr>
 			                <tr>
 			                    <td>내용</td>
 			                    <td>
-			                        <textarea name="content">내용</textarea>
+			                        <textarea name="content">${views.getContent() }</textarea>
 			                    </td>
 			                </tr>
 			                <tr>
@@ -22,8 +26,8 @@
 			                </tr>
 			            </table>
 			            <div>
-			                <a href="./list.do?group=${group}&cate=${cate}" class="btnCancel">취소</a>
-			                <input type="submit"  class="btnWrite" value="수정완료">
+			                <a href="/Farmstory2/board/list.do?group=${group}&cate=${cate}" class="btn btnCancel">취소</a>
+			                <input type="submit"  class="btn btnWrite" value="수정완료">
 			            </div>
 			        </form>
 			    </article>

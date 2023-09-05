@@ -46,7 +46,6 @@ public class ListController extends HttpServlet {
 					
 					//데이터수신
 					String pg =req.getParameter("pg");
-					String search =req.getParameter("search");
 					String group = req.getParameter("group");
 					String cate = req.getParameter("cate");
 					
@@ -75,7 +74,7 @@ public class ListController extends HttpServlet {
 
 					
 					
-					//전체 게시물 갯수조회
+					//전체 게시물 갯수조회 게시판별 
 					total =service.selectCountTotal(cate);
 					
 					if(total%10 == 0){

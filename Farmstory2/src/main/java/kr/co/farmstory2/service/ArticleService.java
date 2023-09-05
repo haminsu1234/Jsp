@@ -30,6 +30,10 @@ public enum ArticleService {
 	private Logger logger =LoggerFactory.getLogger(this.getClass());
 	private ArticleDAO dao =ArticleDAO.getInstance();
 	
+	public List<ArticleDTO> selectComments(String parent) {
+		return dao.selectComments(parent);
+	}
+	
 	public List<ArticleDTO> selectArticles(int start, String cate) {
 		return dao.selectArticles(start, cate);
 	}
@@ -38,6 +42,37 @@ public enum ArticleService {
 		return dao.insertArticle(dto);
 	}
 	
+	public int insertComment(ArticleDTO dto) {
+		return dao.insertComment(dto);
+	}
+	
+	public void updateArticle(ArticleDTO dto) {
+		dao.updateArticle(dto);
+	}
+	
+	public int updateComment(ArticleDTO dto) {
+		return dao.updateComment(dto);
+	}
+	
+	public void updateCommentNum(String parent) {
+		dao.updateCommentNum(parent);
+	}
+	
+	public void updateViewHit(String no) {
+		 dao.updateViewHit(no);
+	}
+	
+	public void deleteArticle(String no) {
+		 dao.deleteArticle(no);
+	}
+	
+	public int deleteComment(String no) {
+		 return dao.deleteComment(no);
+	}
+	
+	public ArticleDTO selectView(String no) {
+		return dao.selectView(no);
+	}
 
 	//업로드 경로 구하기
 		public String getUploadPath(HttpServletRequest req) {

@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::로그인</title>    
-    <link rel="stylesheet" href="../css/style.css"/>
-     <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="/Farmstory2/user/css/style.css"/>
+     <link rel="stylesheet" href="/Farmstory2/css/style.css"/>
      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
     <link rel="stylesheet" href="/Farmstory1/Farmstory/css/style.css"/>
