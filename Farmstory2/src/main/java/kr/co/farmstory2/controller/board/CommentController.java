@@ -69,7 +69,7 @@ public class CommentController extends HttpServlet {
 		dto.setRegip(regip);
 		
 		int result=service1.insertComment(dto);
-		service1.updateCommentNum(parent);
+		//service1.updateCommentNum(parent);
 		
 		JsonObject json =new JsonObject();
 		json.addProperty("result", result);

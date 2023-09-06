@@ -46,8 +46,8 @@ public enum ArticleService {
 		return dao.insertComment(dto);
 	}
 	
-	public void updateArticle(ArticleDTO dto) {
-		dao.updateArticle(dto);
+	public int updateArticle(ArticleDTO dto) {
+		return dao.updateArticle(dto);
 	}
 	
 	public int updateComment(ArticleDTO dto) {
@@ -72,6 +72,10 @@ public enum ArticleService {
 	
 	public ArticleDTO selectView(String no) {
 		return dao.selectView(no);
+	}
+	
+	public void updateCountFile(String no) {
+		dao.updateCountFile(no);
 	}
 
 	//업로드 경로 구하기

@@ -81,15 +81,15 @@ public class ArticleDAO extends DBHelper{
 	
 	
 	public void selectArticle() {}
-	public void updateArticle(ArticleDTO dto) {
-		
+	public int updateArticle(ArticleDTO dto) {
+		int no =0;
 		try {
 			conn=getConnection();
 			psmt=conn.prepareStatement(SQL.UPDATE_ARTICLE);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setInt(3, dto.getNo());
-			
+			no=dto.getNo();
 			psmt.executeUpdate();
 			
 			close();
@@ -99,7 +99,7 @@ public class ArticleDAO extends DBHelper{
 			logger.error("updateArticle error : " + e.getMessage());
 		}
 		
-		
+		return no;
 	}
 	
 	public void updateViewHit(String no) {
@@ -125,13 +125,14 @@ public class ArticleDAO extends DBHelper{
 			conn=getConnection();
 			psmt=conn.prepareStatement(SQL.UPDATE_COMMENT_NUM);
 			psmt.setString(1, parent);
+			psmt.setString(2, parent);
 			
 			psmt.executeUpdate();
 			
 			close();
 			
 		} catch (Exception e) {
-			logger.error("updateViewHit error : " + e.getMessage());
+			logger.error("updateCommentNum error : " + e.getMessage());
 		}
 		
 	}
@@ -295,6 +296,21 @@ public class ArticleDAO extends DBHelper{
 		
 		return comments;
 		
+	}
+	
+	public void updateCountFile(String no) {
+		try {
+			conn=getConnection();
+			psmt=conn.prepareStatement(SQL.UPDATE_COUNT_FILE);
+			psmt.setString(1, no);
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch (Exception e) {
+			logger.info("countFile : " +e.getMessage());
+		}
 	}
 	
 }

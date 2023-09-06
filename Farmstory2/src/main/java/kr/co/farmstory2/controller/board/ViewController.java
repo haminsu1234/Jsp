@@ -46,6 +46,7 @@ public class ViewController extends HttpServlet {
 		
 		//ArticleDTO article =service1.selectViewFile(no);
 		service1.updateViewHit(no);
+		service1.updateCommentNum(no);
 		ArticleDTO view=service1.selectView(no);
 		FileDTO file =service2.selectFile(no);
 		

@@ -1,5 +1,6 @@
 package kr.co.farmstory2.controller.board;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import com.google.gson.JsonObject;
 import kr.co.farmstory2.dto.ArticleDTO;
 import kr.co.farmstory2.dto.UserDTO;
 import kr.co.farmstory2.service.ArticleService;
+import kr.co.farmstory2.service.FileService;
 import kr.co.farmstory2.service.UserService;
 
 
@@ -32,6 +34,7 @@ public class DeleteController extends HttpServlet {
 	private static final long serialVersionUID = 6174594878377156019L;
 
 	private ArticleService service = ArticleService.INSTANCE;
+	private FileService service2 =FileService.INSTANCE;
 	private Logger logger =LoggerFactory.getLogger(this.getClass());
 	
 	@Override
@@ -40,10 +43,40 @@ public class DeleteController extends HttpServlet {
 		String no = req.getParameter("no");
 		String group = req.getParameter("group");
 		String cate = req.getParameter("cate");
+		String onlyfile = req.getParameter("onlyfile");
 		
-		service.deleteArticle(no);
+		if(onlyfile.equals("yes")) {
+			int result =service2.deleteFile(no);
+				
+			if(result > 0) {
+			service.updateCountFile(no);
+			String path = service.getUploadPath(req);
+			
+			File file = new File(path+"/"+"파일명");
+			
+			if(file.exists()) {
+				file.delete();	
+			}
+			resp.sendRedirect("/Farmstory2/board/modify.do?group="+group+"&cate="+cate+"&no="+no);
+		}
+		}else {
+			int result =service2.deleteFile(no);
+			service.deleteArticle(no);
+			if(result > 0) {
+			String path = service.getUploadPath(req);
+			
+			File file = new File(path+"/"+"파일명");
+			
+				if(file.exists()) {
+					file.delete();	
+				}
+			}
+			resp.sendRedirect("/Farmstory2/board/list.do?group="+group+"&cate="+cate);
+		}
 		
-		resp.sendRedirect("/Farmstory2/board/list.do?group="+group+"&cate="+cate);
+		
+		
+		
 					
 		
 
@@ -53,12 +86,20 @@ public class DeleteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String kind = req.getParameter("kind");
 		String no = req.getParameter("no");
+		String parent = req.getParameter("no");
+		
+		logger.info("kind : "+kind);
+		logger.info("no : "+no);
+		logger.info("parent : "+parent);
 		
 		int result=0;
 		switch(kind) {
 		case"REMOVE":
 			result=service.deleteComment(no);
+			
+			break;
 		}
+
 		JsonObject json = new JsonObject();
 		json.addProperty("result", result);
 		resp.getWriter().print(json);

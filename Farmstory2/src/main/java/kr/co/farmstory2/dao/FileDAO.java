@@ -91,7 +91,7 @@ public class FileDAO extends DBHelper {
 	
 	public void updateFile(FileDTO dto) {}
 	
-	/*public int deleteFile(String ano) {
+	public int deleteFile(String ano) {
 		int result=0;
 		try {
 			conn =getConnection();
@@ -105,7 +105,7 @@ public class FileDAO extends DBHelper {
 			logger.error("deletfile : "+e.getMessage());
 		}
 		return result;
-	}*/
+	}
 	
 	
 	

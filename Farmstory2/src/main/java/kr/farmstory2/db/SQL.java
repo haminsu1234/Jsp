@@ -76,7 +76,7 @@ public class SQL {
 	public static final String UPDATE_COMMENT ="UPDATE `Article` SET `content`=? where `no`=?";
 	
 	public static final String UPDATE_VIEW_HIT="UPDATE `Article` SET `hit`=`hit`+1 where `no`=?";
-	public static final String UPDATE_COMMENT_NUM="UPDATE `Article` SET `comment`=`comment`+1 where `no`=?";
+	public static final String UPDATE_COMMENT_NUM="UPDATE `Article` SET `comment`= (SELECT COUNT(*) FROM ( SELECT * FROM `Article` WHERE `PARENT`=? and USEYN='') tmp_1) where `no`=?";
 	
 	//DELETE
 	public static final String DELETE_ARTICLE="UPDATE `Article` set `useyn`='N' WHERE `no`=?";
@@ -91,8 +91,8 @@ public class SQL {
 			+ "`rdate`=NOW()";
 public static final String SELECT_FILE ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE ano=? ";
 public static final String SELECT_FILE2 ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE fno=? ";
+public static final String DELETE_FILE = "DELETE FROM `File` WHERE `ano`=?";	
 	
-	
-
+public static final String UPDATE_COUNT_FILE="UPDATE `Article` SET `file`=`file`-1 where `no`=?";
 	
 }

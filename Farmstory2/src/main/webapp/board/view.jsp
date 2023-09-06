@@ -41,6 +41,28 @@
 			
 		})
 		
+		/*$(document).on('click', '.remove', function(e) {
+			  e.preventDefault();
+			  const no = $(this).data('no');
+			  const article = $(this).closest('.article');
+			  const jsonData = {
+			    "kind": "REMOVE",
+			    "no": no
+			  };
+			  $.ajax({
+			    url: '/Farmstory2/board/delete.do',
+			    type: 'POST',
+			    data: jsonData,
+			    dataType: 'json',
+			    success: function(data) {
+			      if (data.result > 0) {
+			        alert('댓글삭제완료');
+			        article.remove();
+			      }
+			    }
+			  });
+			});
+		*/// 이렇게하면 실행자체는 되긴하는데 화면에 즉각적인 반응이 안옴 새로고침해야지 삭제되었는지 알수있음 
 		
 		//댓글수정
 		$('.mod').click(function(e){
@@ -185,6 +207,8 @@
 			            <td>내용</td>
 			            <td>
 			                <textarea name="content" readonly>${view.getContent() }</textarea>
+			                <a href="#">추천</a>
+			                <a href="#">비추천</a>
 			            </td>
 			        </tr>
 			    </table>

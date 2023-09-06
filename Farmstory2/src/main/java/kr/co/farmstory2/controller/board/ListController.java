@@ -119,7 +119,7 @@ public class ListController extends HttpServlet {
 					req.setAttribute("group", group);
 					req.setAttribute("cate", cate);
 					
-
+					
 					List<ArticleDTO> article = service2.selectArticles(start,cate);
 					req.setAttribute("article", article);
 					

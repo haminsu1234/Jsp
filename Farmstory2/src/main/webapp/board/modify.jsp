@@ -4,7 +4,7 @@
 			<section class="modify">
 			    <h3>글수정</h3>
 			    <article>
-			        <form action="/Farmstory2/board/modify.do" method="post">
+			        <form action="/Farmstory2/board/modify.do" method="post" enctype="multipart/form-data" >
 			        <input type="hidden" name="no" value="${views.getNo()}"/>
 			        <input type="hidden" name="group" value="${group}"/>
 			        <input type="hidden" name="cate" value="${cate}"/>
@@ -22,7 +22,15 @@
 			                </tr>
 			                <tr>
 			                    <td>첨부</td>
-			                    <td><input type="file" name="file"/></td>
+			                    <c:if test="${views.getFile() eq 0 }">
+			                    	<td><input type="file" multiple="multiple" name="file"/></td>
+			                	</c:if>
+			                	<c:if test="${views.getFile() > 0 }">
+			                	<td>
+			                		<a href="/Farmstory2/upload/${file.getNewName()}" download="${file.getOriName()}">${file.getOriName()}</a>
+			                		<a href="/Farmstory2/board/delete.do?no=${views.getNo()}&onlyfile=yes&group=${group}&cate=${cate}">[X]</a>
+			                	</td>
+			                	</c:if>
 			                </tr>
 			            </table>
 			            <div>
