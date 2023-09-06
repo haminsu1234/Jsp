@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
 <body>
     <div id="container">
         <header>
-            <a href="./index.html" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
+            <a href="/Farmstory2/admin/index.do" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
             <p>
                 <a href="#">HOME |</a>
                 <a href="#">로그아웃 |</a>

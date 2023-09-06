@@ -45,8 +45,8 @@ public class ViewController extends HttpServlet {
 		logger.info("regip : "+regip);
 		
 		//ArticleDTO article =service1.selectViewFile(no);
-		service1.updateViewHit(no);
-		service1.updateCommentNum(no);
+		service1.updateViewHit(no);//게시물 조회수기능 
+		service1.updateCommentNum(no);//댓글수 기능 그런데 이거는 기능이 수정되어야하는게 댓글을 작성하고 새로고침후 목록 버튼을 눌려야 댓글수가 정상적으로 카운트됨 이거는 로직의 문제 같음 
 		ArticleDTO view=service1.selectView(no);
 		FileDTO file =service2.selectFile(no);
 		

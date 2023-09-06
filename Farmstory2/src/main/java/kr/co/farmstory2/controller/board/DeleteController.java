@@ -44,7 +44,7 @@ public class DeleteController extends HttpServlet {
 		String group = req.getParameter("group");
 		String cate = req.getParameter("cate");
 		String onlyfile = req.getParameter("onlyfile");
-		
+		// onlyfile 값이 있을경우에만 파일만(중요) 삭제함 왜냐? onlyfile에 값이 들어오는경우는 modify에서 파일수정할때 말고는 없기때문 
 		if(onlyfile != null) {
 			int result =service2.deleteFile(no);
 				
@@ -59,7 +59,7 @@ public class DeleteController extends HttpServlet {
 			}
 			resp.sendRedirect("/Farmstory2/board/modify.do?group="+group+"&cate="+cate+"&no="+no);
 			}
-		}else if (onlyfile==null){
+		}else if (onlyfile==null){ // onlyfile 값이 null 일경우에는 view -> delete 이기떄문에 게시글까지 삭제하는것
 			int result =service2.deleteFile(no);
 			service.deleteArticle(no);
 			if(result > 0) {

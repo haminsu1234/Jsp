@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 개발/배포에서 ContextPath 포함 여부에 따른 동적처리 -->
+<!-- 요방법은 좀 신박하다 -->
 <c:set var="ctxPath" value="${pageContext.request.contextPath}"></c:set>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +30,19 @@
     
      -->
       <script>
+      $(function(){
+          $('.slider > ul').bxSlider({
+              slideWidth: 980,
+              pager: false,
+              controls: false,
+              auto: true
+          });
+
+          $('#tabs').tabs();
+      });
+      
+      
+      
     	const success = ${success};
     	
     	if(success == 100){
@@ -62,7 +76,7 @@
             
             <ul class="gnb">
                 <li><a href="${ctxPath}/introduction/hello.do">팜스토리소개</a></li>
-                <li><a href="${ctxPath}/market/list.do"><img src="${ctxPath}/images/head_menu_badge.png" alt="30%"/>장보기</a></li>
+                <li><a href="${ctxPath}/market/list.do?type=1&pg=1"><img src="${ctxPath}/images/head_menu_badge.png" alt="30%"/>장보기</a></li>
                 <li><a href="${ctxPath}/board/list.do?group=Croptalk&cate=story">농작물이야기</a></li>
                 <li><a href="${ctxPath}/board/list.do?group=Event&cate=event">이벤트</a></li>
                 <li><a href="${ctxPath}/board/list.do?group=Community&cate=notice">커뮤니티</a></li>
