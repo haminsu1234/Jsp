@@ -313,4 +313,19 @@ public class ArticleDAO extends DBHelper{
 		}
 	}
 	
+	public void updateCountFile2(String no) {
+		try {
+			conn=getConnection();
+			psmt=conn.prepareStatement(SQL.UPDATE_COUNT_FILE2);
+			psmt.setString(1, no);
+			
+			psmt.executeUpdate();
+			
+			close();
+			
+		} catch (Exception e) {
+			logger.info("countFile : " +e.getMessage());
+		}
+	}
+	
 }

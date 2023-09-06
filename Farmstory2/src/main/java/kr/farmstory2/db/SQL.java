@@ -94,5 +94,6 @@ public static final String SELECT_FILE2 ="SELECT `oriName`,`newName`,`download` 
 public static final String DELETE_FILE = "DELETE FROM `File` WHERE `ano`=?";	
 	
 public static final String UPDATE_COUNT_FILE="UPDATE `Article` SET `file`=`file`-1 where `no`=?";
-	
+
+public static final String UPDATE_COUNT_FILE2="UPDATE `Article` SET `file`=`file`+1 where `no`=?";
 }

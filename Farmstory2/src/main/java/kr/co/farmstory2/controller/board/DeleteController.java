@@ -58,8 +58,8 @@ public class DeleteController extends HttpServlet {
 				file.delete();	
 			}
 			resp.sendRedirect("/Farmstory2/board/modify.do?group="+group+"&cate="+cate+"&no="+no);
-		}
-		}else {
+			}
+		}else if (onlyfile.equals(null)) {
 			int result =service2.deleteFile(no);
 			service.deleteArticle(no);
 			if(result > 0) {

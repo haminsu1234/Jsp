@@ -35,14 +35,12 @@ public class ModifyController extends HttpServlet {
 		String cate = req.getParameter("cate");
 		
 		ArticleDTO views =service1.selectView(no);
+		FileDTO file = service2.selectFile(no);
+		req.setAttribute("file", file);
 
+		
+		
 		req.setAttribute("views", views);
-		
-		if(views.getFile() > 1) {
-			FileDTO file = service2.selectFile(no);
-			req.setAttribute("file", file);
-		}
-		
 		req.setAttribute("group", group);
 		req.setAttribute("cate", cate);
 		
@@ -108,7 +106,7 @@ public class ModifyController extends HttpServlet {
 			filedto.setNewName(sName);
 			
 			service2.insertFile(filedto);
-			service1.
+			service1.updateCountFile2(no);
 			
 			
 		}

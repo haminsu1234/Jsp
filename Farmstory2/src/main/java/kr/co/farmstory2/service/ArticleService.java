@@ -77,6 +77,11 @@ public enum ArticleService {
 	public void updateCountFile(String no) {
 		dao.updateCountFile(no);
 	}
+	
+	public void updateCountFile2(String no) {
+		dao.updateCountFile2(no);
+	}
+
 
 	//업로드 경로 구하기
 		public String getUploadPath(HttpServletRequest req) {
