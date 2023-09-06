@@ -170,7 +170,7 @@
 											<p class='content'>`+content+`</p>
 											<div>
 												<a href='#' class='remove'>삭제</a>
-												<a href='#' class='modify'>수정</a>
+												<a href='#' class='mod modify' >수정</a>
 											</div>						
 										 </article>`;
 						

@@ -45,7 +45,7 @@ public class DeleteController extends HttpServlet {
 		String cate = req.getParameter("cate");
 		String onlyfile = req.getParameter("onlyfile");
 		
-		if(onlyfile.equals("yes")) {
+		if(onlyfile != null) {
 			int result =service2.deleteFile(no);
 				
 			if(result > 0) {
@@ -59,7 +59,7 @@ public class DeleteController extends HttpServlet {
 			}
 			resp.sendRedirect("/Farmstory2/board/modify.do?group="+group+"&cate="+cate+"&no="+no);
 			}
-		}else if (onlyfile.equals(null)) {
+		}else if (onlyfile==null){
 			int result =service2.deleteFile(no);
 			service.deleteArticle(no);
 			if(result > 0) {

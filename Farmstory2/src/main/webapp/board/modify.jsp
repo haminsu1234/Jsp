@@ -28,7 +28,7 @@
 			                	<c:if test="${views.getFile() > 0 }">
 			                	<td>
 			                		<a href="/Farmstory2/upload/${file.getNewName()}" download="${file.getOriName()}">${file.getOriName()}</a>
-			                		<a href="/Farmstory2/board/delete.do?no=${views.getNo()}&onlyfile=yes&group=${group}&cate=${cate}">[X]</a>
+			                		<a href="/Farmstory2/board/delete.do?no=${views.getNo()}&onlyfile=yes&group=${group}&cate=${cate}">[파일삭제]</a>
 			                	</td>
 			                	</c:if>
 			                </tr>
