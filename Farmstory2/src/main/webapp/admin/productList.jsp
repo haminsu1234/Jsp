@@ -44,7 +44,7 @@
                             	곡물
                             </c:if>
                             </td>
-                            <td>${product.getPrice()}</td>
+                            <td>${product.getPriceWithComma()}</td>
                             <td>${product.getStock()}</td>
                             <td>${product.getRdate()}</td>                            
                         </tr>

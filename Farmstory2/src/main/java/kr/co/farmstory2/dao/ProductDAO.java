@@ -3,6 +3,9 @@ package kr.co.farmstory2.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.co.farmstory2.dto.ProductDTO;
 import kr.farmstory2.db.DBHelper;
 import kr.farmstory2.db.SQL;
@@ -13,7 +16,7 @@ public class ProductDAO extends DBHelper{
 	public static ProductDAO getInstance() {
 		return instance;
 	}
-
+	private Logger logger =LoggerFactory.getLogger(this.getClass());
 	public void insertProduct(ProductDTO dto) {
 		try {
 			conn=getConnection();
@@ -37,14 +40,48 @@ public class ProductDAO extends DBHelper{
 			
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("insertProduct error : "+e.getMessage());		
 		}
 		
 		
 	
 	}
 	
-	public void selectProduct() {}
+	public ProductDTO selectProduct(String pno) {
+		ProductDTO dto =new ProductDTO();
+		try {
+			conn=getConnection();
+			psmt=conn.prepareStatement(SQL.SELECT_PRODUCT);
+			psmt.setString(1, pno);
+			
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setPno(rs.getInt(1));
+				dto.setType(rs.getInt(2));
+				dto.setpName(rs.getString(3));
+				dto.setPrice(rs.getInt(4));
+				dto.setDelivery(rs.getInt(5));
+				dto.setStock(rs.getInt(6));
+				dto.setSold(rs.getInt(7));
+				dto.setThumb1(rs.getString(8));
+				dto.setThumb2(rs.getString(9));
+				dto.setThumb3(rs.getString(10));
+				dto.setSeller(rs.getString(11));
+				dto.setEtc(rs.getString(12));
+				dto.setRdate(rs.getString(13));
+			};
+			
+		} catch (Exception e) {
+
+			logger.error("selectProduct error : "+e.getMessage());
+		}
+		
+		
+		return dto;
+	}
+	
+	
 	
 	public List<ProductDTO> selectProducts(String type, int start) {
 		List<ProductDTO> products = new ArrayList<>();
@@ -81,7 +118,7 @@ public class ProductDAO extends DBHelper{
 			
 			close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("selectProducts error : "+e.getMessage());
 		}
 		
 		return products;
@@ -112,7 +149,7 @@ public class ProductDAO extends DBHelper{
 			
 			close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("selectCountProductTotal error : "+e.getMessage());
 		}
 		return total;
 	}

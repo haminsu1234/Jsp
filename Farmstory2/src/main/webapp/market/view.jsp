@@ -1,5 +1,57 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
+<script>
+	
+	const price =${product.price}
+	const delivery=${product.delivery}
+	$(function(){
+		$('input[name=count]').change(function(){
+			//console.log('change!!');
+			var count= document.getElementsByName("count")[0].value;
+			let total=price*count
+			let finalPrice=total+delivery;
+			
+			$('input[name=count]').val(count);
+			$('input[name=total]').val(total);
+			$('input[name=final]').val(finalPrice);
+			$('.total').text(total.toLocaleString()+'원')
+			console.log(total);
+			})
+		
+	
+	
+		//주문하기 생각을 잘못함 이거 어짜피 ajax 로 해야함 
+		/*$('.btnOrder').click(function(e){
+			e.preventDefault();
+			
+			$('#formOrder').submit();
+		
+		
+		
+		
+		
+		})*/
+	
+	
+	
+	
+	
+	
+	
+	})
+
+	
+
+	//var price= document.getElementsByName("price")[0].value;
+	//var delivery= document.getElementsByName("delivery")[0].value;
+	// 엄.... 이거 아닌듯?
+	
+	//function countvalue(){
+	//	var count= document.getElementsByName("count")[0].value();
+	//	var total=(price*count)+delivery
+	//} 엄.... 이것도 접근이 틀렸음
+
+</script>
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
@@ -7,7 +59,7 @@
                     <img src="../images/sub_aside_cate2_tit.png" alt="장보기"/>
 
                     <ul class="lnb">
-                        <li class="on"><a href="./market.html">장보기</a></li>
+                        <li class="on"><a href="./market/list.do?type=1">장보기</a></li>
                     </ul>
                 </aside>
                 <article class="view">
@@ -21,27 +73,27 @@
                     <!-- 내용 시작 -->
                     <h3>기본정보</h3>
                     <div class="basic">
-                        <img src="../images/market_item_thumb.jpg" alt="딸기 500g">
+                        <img src="/Farmstory2/upload/${product.getThumb2() }" alt="딸기 500g">
 
                         <table border="0">                            
                             <tr>
                                 <td>상품명</td>
-                                <td>딸기 500g</td>
+                                <td>${product.getpName() }</td>
                             </tr>
                             <tr>
                                 <td>상품코드</td>
-                                <td>01</td>
+                                <td>${product.getPno() }</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
                                 <td>
-                                    <span>5,000</span>원
+                                    <span>${product.getDeliveryWithComma() }</span>원
                                     <em>3만원 이상 무료배송</em>
                                 </td>
                             </tr>
                             <tr>
                                 <td>판매가격</td>
-                                <td>4,000원</td>
+                                <td>${product.getPriceWithComma() }</td>
                             </tr>
                             <tr>
                                 <td>구매수량</td>
@@ -62,7 +114,7 @@
                     </div>
                     <h3>상품설명</h3>
                     <div class="detail">
-                        <img src="../images/market_detail_sample.jpg" alt="">
+                        <img src="/Farmstory2/upload/${product.getThumb3() }" alt="">
 
                     </div>
 

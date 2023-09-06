@@ -108,12 +108,13 @@ public class ListController extends HttpServlet{
 			logger.info("start : " + pageGroupStart);
 			logger.info("start : " + pageGroupEnd);
 			logger.info("start : " + pageStartNum);
-
 			
+
 			
 			
 			req.setAttribute("products", products);
 			req.setAttribute("start", start);
+			req.setAttribute("type", type);
 			req.setAttribute("currentPage", currentPage);
 			req.setAttribute("total", total);
 			req.setAttribute("lastPageNum", lastPageNum);
