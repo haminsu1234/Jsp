@@ -162,7 +162,7 @@ public class ProductDTO {
 		File f1 =new File(path+"/"+thumb);//원래파일명
 		File f2 =new File(path+"/"+sName);//uuid로 생성된 파일명
 
-		f1.renameTo(f2);
+		f1.renameTo(f2); //f1 을 f2로 바꿔줌
 
 		return sName;
 	}
