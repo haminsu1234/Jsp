@@ -152,15 +152,15 @@ public class ProductDTO {
 	}
 	
 	public String fileRename(String thumb) {
-		int i=thumb.lastIndexOf(".");
-		String ext = thumb.substring(i);
+		int i=thumb.lastIndexOf(".");//확장자가 표시되는시점
+		String ext = thumb.substring(i);//확장자구하기
 
-		String uuid =UUID.randomUUID().toString();
-		String sName =uuid+ext;
+		String uuid =UUID.randomUUID().toString();//저장되는 파일명(이름만 확장자 제외)
+		String sName =uuid+ext;//(저장소에 저장되는 파일명)
 
 		
-		File f1 =new File(path+"/"+thumb);		
-		File f2 =new File(path+"/"+sName);
+		File f1 =new File(path+"/"+thumb);//원래파일명
+		File f2 =new File(path+"/"+sName);//uuid로 생성된 파일명
 
 		f1.renameTo(f2);
 

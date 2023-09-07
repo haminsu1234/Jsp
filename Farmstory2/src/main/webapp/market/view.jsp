@@ -4,6 +4,7 @@
 	
 	const price =${product.price}
 	const delivery=${product.delivery}
+	
 	$(function(){
 		$('input[name=count]').change(function(){
 			//console.log('change!!');
@@ -21,16 +22,44 @@
 	
 	
 		//주문하기 생각을 잘못함 이거 어짜피 ajax 로 해야함 
-		/*$('.btnOrder').click(function(e){
+		$('.btnOrder').click(function(e){
 			e.preventDefault();
 			
-			$('#formOrder').submit();
+			  const pName =${product.getpName() }
+			  const pno = ${product.getPno()} 
+			  const  thumb2= ${product.getThumb2() }
+			
+			var count= document.getElementsByName("count")[0].value;
+			let total=price*count //배송비제외한 합계금
+			let finalPrice=total+delivery; // 배송비포함한 합계금
+			
+			const jsonData={
+					"pName" : pName,
+					"pno" : pno,
+					"thumb2" :thumb2,
+					"delivery":delivery,
+					"price" : price,
+					"count" : count,
+					"total" : total,
+					"finalPrice":finalPrice,
+			}
+			
+			console.log(jsonData);
+			
+			$.ajax({
+			    url: '/Farmstory2/market/order.do',
+			    type: 'POST',
+			    data: jsonData,
+			    dataType: 'json',
+			    error: function(xhr, status, error) {
+			    	console.log("요청 실패: " + xhr.status + " " + xhr.statusText);
+			    }
+			  });
 		
 		
 		
 		
-		
-		})*/
+		})
 	
 	
 	
@@ -103,13 +132,15 @@
                             </tr>
                             <tr>
                                 <td>합계</td>
-                                <td class="total">4,000원</td>
+                                <td class="total">${product.getPriceWithComma() }</td>
                             </tr>
-
+						<!--  <form action="/Farmstory2/market/order.do" method="#">
+						</form>-->
+						
                             <a href="${ctxPath}/market/order.do" class="btnOrder">
                                 <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
                             </a>
-
+						
                         </table>
                     </div>
                     <h3>상품설명</h3>

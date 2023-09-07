@@ -8,7 +8,7 @@
                     <img src="../images/sub_aside_cate2_tit.png" alt="장보기"/>
 
                     <ul class="lnb">
-                        <li class="on"><a href="./market.html">장보기</a></li>
+                        <li class="on"><a href="./market/list.do">장보기</a></li>
                     </ul>
                 </aside>
                 <article class="order">

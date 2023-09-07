@@ -486,6 +486,7 @@ main > .info > div > .account {
 }
 #sub > .market > .list > .paging > .on {
     color: #111;
+    background-color: #bebebe;
     text-decoration: underline;
 }
 

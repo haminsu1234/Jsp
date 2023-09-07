@@ -56,7 +56,7 @@
 						</c:if>
 	               
 						<c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" >               
-	                    <a href="/Farmstory2/market/list.do?type=${type }&pg=${i}" class="num ${currentPage==i ? 'current':''}">${i}</a>
+	                    <a href="/Farmstory2/market/list.do?type=${type }&pg=${i}" class="num ${currentPage==i ? 'on':''}">${i}</a>
 	                    </c:forEach>
 						
 						<c:if test="${pageGroupEnd < lastPageNum }">
