@@ -1,18 +1,40 @@
 package kr.co.farmstory2.dto;
 
+import java.text.DecimalFormat;
+
 public class OrderDTO {
 
 	private int orderno;
 	private int orderproduct;
-	private int orderreceiver;
+	private String orderreceiver;
 	private int ordercount;
 	private int orderdelivery;
 	private int orderprice;
 	private int ordertotal;
-	private int orderhp;
-	private int orderzip;
-	private int orderaddr1;
-	private int orderaddr2;
+	private String orderhp;
+	private String orderzip;
+	private String orderaddr1;
+	private String orderaddr2;
+	private String orderetc;
+	private String orderuser;
+	private String orderdate;
+	private String useyn;
+	private String pName;
+	private String thumb1;
+	
+	
+	public String getpName() {
+		return pName;
+	}
+	public void setpName(String pName) {
+		this.pName = pName;
+	}
+	public String getThumb1() {
+		return thumb1;
+	}
+	public void setThumb1(String thumb1) {
+		this.thumb1 = thumb1;
+	}
 	public int getOrderno() {
 		return orderno;
 	}
@@ -25,10 +47,15 @@ public class OrderDTO {
 	public void setOrderproduct(int orderproduct) {
 		this.orderproduct = orderproduct;
 	}
-	public int getOrderreceiver() {
+	
+	public void setOrderproduct(String orderproduct) {
+		this.orderproduct = Integer.parseInt(orderproduct);
+	}
+	
+	public String getOrderreceiver() {
 		return orderreceiver;
 	}
-	public void setOrderreceiver(int orderreceiver) {
+	public void setOrderreceiver(String orderreceiver) {
 		this.orderreceiver = orderreceiver;
 	}
 	public int getOrdercount() {
@@ -37,54 +64,44 @@ public class OrderDTO {
 	public void setOrdercount(int ordercount) {
 		this.ordercount = ordercount;
 	}
+	public void setOrdercount(String ordercount) {
+		this.ordercount = Integer.parseInt(ordercount);
+	}
+	
 	public int getOrderdelivery() {
 		return orderdelivery;
 	}
 	public void setOrderdelivery(int orderdelivery) {
 		this.orderdelivery = orderdelivery;
 	}
+	
+	public void setOrderdelivery(String orderdelivery) {
+		this.orderdelivery = Integer.parseInt(orderdelivery);
+	}
+	
 	public int getOrderprice() {
 		return orderprice;
 	}
 	public void setOrderprice(int orderprice) {
 		this.orderprice = orderprice;
 	}
+	
+	public void setOrderprice(String orderprice) {
+		this.orderprice =  Integer.parseInt(orderprice);
+	}
+	
+	
 	public int getOrdertotal() {
 		return ordertotal;
 	}
 	public void setOrdertotal(int ordertotal) {
 		this.ordertotal = ordertotal;
 	}
-	public int getOrderhp() {
-		return orderhp;
+	
+	public void setOrdertotal(String ordertotal) {
+		this.ordertotal =  Integer.parseInt(ordertotal);
 	}
-	public void setOrderhp(int orderhp) {
-		this.orderhp = orderhp;
-	}
-	public int getOrderzip() {
-		return orderzip;
-	}
-	public void setOrderzip(int orderzip) {
-		this.orderzip = orderzip;
-	}
-	public int getOrderaddr1() {
-		return orderaddr1;
-	}
-	public void setOrderaddr1(int orderaddr1) {
-		this.orderaddr1 = orderaddr1;
-	}
-	public int getOrderaddr2() {
-		return orderaddr2;
-	}
-	public void setOrderaddr2(int orderaddr2) {
-		this.orderaddr2 = orderaddr2;
-	}
-	public int getOrderetc() {
-		return orderetc;
-	}
-	public void setOrderetc(int orderetc) {
-		this.orderetc = orderetc;
-	}
+	
 	public String getOrderuser() {
 		return orderuser;
 	}
@@ -103,9 +120,47 @@ public class OrderDTO {
 	public void setUseyn(String useyn) {
 		this.useyn = useyn;
 	}
-	private int orderetc;
-	private String orderuser;
-	private String orderdate;
-	private String useyn;
+	public String getOrderhp() {
+		return orderhp;
+	}
+	public void setOrderhp(String orderhp) {
+		this.orderhp = orderhp;
+	}
+	public String getOrderzip() {
+		return orderzip;
+	}
+	public void setOrderzip(String orderzip) {
+		this.orderzip = orderzip;
+	}
+	public String getOrderaddr1() {
+		return orderaddr1;
+	}
+	public void setOrderaddr1(String orderaddr1) {
+		this.orderaddr1 = orderaddr1;
+	}
+	public String getOrderaddr2() {
+		return orderaddr2;
+	}
+	public void setOrderaddr2(String orderaddr2) {
+		this.orderaddr2 = orderaddr2;
+	}
+	public String getOrderetc() {
+		return orderetc;
+	}
+	public void setOrderetc(String orderetc) {
+		this.orderetc = orderetc;
+	}
+
+	public String getPriceWithComma() {
+		
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(orderprice);
+	}
+	
+	public String getDeliveryWithComma() {
+		
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(orderdelivery);
+	}
 	
 }

@@ -1,6 +1,31 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
+<script>
+$(function(){
+	$('#btnBuy').click(function(e){
+		e.preventDefault();
+		$('#formOrder').submit();
+		
+	})//btnbuy end
+	
+	$('#btnShopping').click(function(e){
+		e.preventDefault();
+		
+		if(confirm("주문을 취소하시겠습니까?")){
+			location.href='/Farmstory2/market/list.do'
+		}
+			
+		
+	})//btnShopping end
+	
+	$('#btnZip').click(function(e){
+		e.preventDefault();
+		
+	})//btnZip end
+})//jQuery end
 
+
+</script>
         <div id="sub">
             <div><img src="../images/sub_top_tit2.png" alt="MARKET"></div>
             <section class="market">
@@ -22,37 +47,46 @@
                     <!-- 내용 시작 -->
                     <h3>주문상품 확인</h3>
                     <div class="info">
-                        <img src="../images/market_item_thumb.jpg" alt="딸기 500g">
+                        <img src="/Farmstory2/upload/${requestScope.thumb2}" alt="딸기 500g">
 
                         <table border="0">                            
                             <tr>
                                 <td>상품명</td>
-                                <td>딸기 500g</td>
+                                <td>${pName }</td>
                             </tr>
                             <tr>
                                 <td>상품코드</td>
-                                <td>01</td>
+                                <td>${pno }</td>
                             </tr>
                             <tr>
                                 <td>배송비</td>
-                                <td class="delivery">5,0000원</td>
+                                <td class="delivery">${commadelivery }</td>
                             </tr>
                             <tr>
                                 <td>판매가격</td>
-                                <td>4,000원</td>
+                                <td>${commaprice }원</td>
                             </tr>
                             <tr>
                                 <td>구매수량</td>
-                                <td class="count">1개</td>
+                                <td class="count">${commacount }개</td>
+                                
                             </tr>
                             <tr>
                                 <td>합계</td>
-                                <td class="total">4,000원</td>
+                                <td class="total">${commafinalPrice }원</td>
                             </tr>
                         </table>
                     </div>
                     <h3>주문정보 입력</h3>
                     <div class="shipping">
+                    <form id ="formOrder"action="/Farmstory2/admin/orderList.do" method="post">
+                        <input type="hidden" name="pno" value="${pno }"/>
+                        <input type="hidden" name="count" value="${count}"/>
+                        <input type="hidden" name="delivery" value="${delivery}"/>
+                        <input type="hidden" name="price" value="${price }"/>
+                        <input type="hidden" name="total" value="${finalPrice }"/>
+                        <input type="hidden" name="orderuser" value="${sessUser.uid }"/>
+                        
                         <table>
                             <tr>
                                 <td>받는분</td>
@@ -60,14 +94,14 @@
                             </tr>
                             <tr>
                                 <td>휴대폰</td>
-                                <td><input type="text" name="hp"></td>
+                                <td><input type="text" name="hp" value="${sessUser.getHp() }"></td>
                             </tr>
                             <tr>
                                 <td>배송주소</td>
                                 <td>
-                                    <input type="text" name="zip" readonly><button id="btnZip">우편번호 검색</button>
-                                    <input type="text" name="addr1" placeholder="기본주소 검색">
-                                    <input type="text" name="addr2" placeholder="상세주소 입력">
+                                    <input type="text" name="zip" value="${sessUser.getZip()}" readonly><button type="button" id="btnZip"  onclick="zipcode()">우편번호 검색</button>
+                                    <input type="text" name="addr1" value="${sessUser.getAddr1() }" placeholder="기본주소 검색">
+                                    <input type="text" name="addr2" value="${sessUser.getAddr2() }" placeholder="상세주소 입력">
                                 </td>
                             </tr>
                             <tr>
@@ -77,6 +111,7 @@
                                 </td>
                             </tr>
                         </table>
+                    </form>
                     </div>
 
                     <p>

@@ -25,8 +25,8 @@ public class LoginController extends HttpServlet {
 	private UserService service = UserService.INSTANCE;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//Sring success = req.getParameter("success");
-		//req.setAttribute("success", success);
+		String success = req.getParameter("success");
+		req.setAttribute("success", success);
 
 				
 		RequestDispatcher dispatcher=req.getRequestDispatcher("/user/login.jsp");
@@ -48,7 +48,7 @@ public class LoginController extends HttpServlet {
 			
 			HttpSession session=req.getSession();
 			session.setAttribute("sessUser",login);
-			resp.sendRedirect("/Farmstory2/index.jsp");
+			resp.sendRedirect("/Farmstory2");
 		}else {
 			resp.sendRedirect("/Farmstory2/user/login.do?success=100");
 		}

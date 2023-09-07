@@ -10,14 +10,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="/Farmstory2/admin/css/style.css">
     <script src="/Farmstory2/admin/js/popup.js"></script>
 </head>
 
 <body>
     <div id="container">
         <header>
-            <a href="/Farmstory2/admin/index.do" class="logo"><img src="./images/admin_logo.jpg" alt="로고"/></a>
+            <a href="/Farmstory2/admin/index.do" class="logo"><img src="/Farmstory2/admin/images/admin_logo.jpg" alt="로고"/></a>
             <p>
                 <a href="#">HOME |</a>
                 <a href="#">로그아웃 |</a>

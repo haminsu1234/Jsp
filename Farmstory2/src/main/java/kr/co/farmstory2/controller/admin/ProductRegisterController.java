@@ -60,7 +60,7 @@ public class ProductRegisterController extends HttpServlet {
 		
 		ProductDTO dto = new ProductDTO(path);
 		dto.setpName(pName);
-		dto.setType(type);
+		dto.setType(type);;
 		dto.setPrice(price);
 		dto.setDelivery(delivery);
 		dto.setStock(stock);

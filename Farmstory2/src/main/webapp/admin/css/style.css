@@ -222,6 +222,10 @@ footer > p {
     box-sizing: border-box;
 }
 
+#orderList .hidden{
+	display: none;
+}
+
 #orderList .paging {
     text-align: center;
 }

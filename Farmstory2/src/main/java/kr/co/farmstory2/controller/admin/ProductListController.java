@@ -67,7 +67,7 @@ public class ProductListController extends HttpServlet{
 			//LIMIT 시작값계산
 			start =(currentPage -1)*10;
 
-			//전체 게시물 조회
+			//전체 게시물 조회 이건 안씀
 			allproduct=service2.selectCountProductTotal(type);
 			
 			

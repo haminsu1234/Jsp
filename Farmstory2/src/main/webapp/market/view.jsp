@@ -22,16 +22,33 @@
 	
 	
 		//주문하기 생각을 잘못함 이거 어짜피 ajax 로 해야함 
+		//라고 생각했으나 ajax로 보낼라하니 스크립트가 다뻗어버리네...
 		$('.btnOrder').click(function(e){
+			e.preventDefault();
+			
+			$('#formOrder').submit();
+		
+		
+		
+		
+		
+		})
+	
+	
+	
+	
+	
+	
+	})
+
+	/*
+	$('.btnOrder').click(function(e){
 			e.preventDefault();
 			
 			  const pName =${product.getpName() }
 			  const pno = ${product.getPno()} 
 			  const  thumb2= ${product.getThumb2() }
-			
-			var count= document.getElementsByName("count")[0].value;
-			let total=price*count //배송비제외한 합계금
-			let finalPrice=total+delivery; // 배송비포함한 합계금
+
 			
 			const jsonData={
 					"pName" : pName,
@@ -44,7 +61,7 @@
 					"finalPrice":finalPrice,
 			}
 			
-			console.log(jsonData);
+			console.log(jsonDa)
 			
 			$.ajax({
 			    url: '/Farmstory2/market/order.do',
@@ -61,15 +78,7 @@
 		
 		})
 	
-	
-	
-	
-	
-	
-	
-	})
-
-	
+	*/
 
 	//var price= document.getElementsByName("price")[0].value;
 	//var delivery= document.getElementsByName("delivery")[0].value;
@@ -134,10 +143,17 @@
                                 <td>합계</td>
                                 <td class="total">${product.getPriceWithComma() }</td>
                             </tr>
-						<!--  <form action="/Farmstory2/market/order.do" method="#">
-						</form>-->
-						
-                            <a href="${ctxPath}/market/order.do" class="btnOrder">
+						<form id="formOrder" action="/Farmstory2/market/order.do" method="POST">
+						    <input type="hidden" name="thumb2" value="${product.getThumb2() }" >
+                        	<input type="hidden" name="pName" value="${product.getpName() }" >
+                        	<input type="hidden" name="pNo" value="${product.getPno() }" >
+                        	<input type="hidden" name="delivery" value="${product.getDelivery() }" >
+                        	<input type="hidden" name="price" value="${product.getPrice() }" >
+                        	<input type="hidden" name="count" value="1">
+                        	<input type="hidden" name="total" value="${product.getPrice() }">
+                        	<input type="hidden" name="final" value="${product.getPrice()+product.getDelivery() }">
+						</form>
+                            <a href="#" class="btnOrder">
                                 <img src="../images/market_btn_order.gif" alt="바로 구매하기"/>
                             </a>
 						
