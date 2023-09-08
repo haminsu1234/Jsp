@@ -29,7 +29,9 @@ public enum OrderService {
 	}
 	{}
 	public void updateOrder() {}
-	public void deleteOrder() {}
+	public void deleteOrder(String orderno) {
+		dao.deleteOrder(orderno);
+	}
 	
 	public int selectCountOrderTotal() {
 		return dao.selectCountOrderTotal();

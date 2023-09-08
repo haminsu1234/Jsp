@@ -2,6 +2,17 @@
 <%@ include file="./_header.jsp" %>
         <main>
 <%@ include file="./_aside.jsp" %>
+<script>
+
+
+
+
+
+
+
+
+
+</script>
             <section id="productList">
                 <nav>
                     <h3>상품목록</h3>
@@ -22,7 +33,7 @@
                         </tr>
                         <c:forEach var="product" items="${requestScope.products}">
                         <tr>
-                            <td><input type="checkbox" name=""/></td>
+                            <td><input type="checkbox" name="chk"/></td>
                             <td><img src="/Farmstory2/upload/${product.getThumb1()}" class="thumb" alt="샘플1"></td>
                             <td>${product.getPno()}</td>
                             <td>${product.getpName()}</td>

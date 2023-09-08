@@ -96,3 +96,17 @@
             });
 
         });
+        
+        $(function(){
+		$('input[name=all]').change(function(){
+			
+			const isChecked =$(this).is(':checked');
+			
+			if(isChecked){
+				$('input[name=chk]').prop('checked',true)
+			}else {
+				$('input[name=chk]').prop('checked',false)
+			}
+			
+		});
+		})

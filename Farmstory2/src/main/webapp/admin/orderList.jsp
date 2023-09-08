@@ -2,13 +2,28 @@
 <%@ include file="./_header.jsp" %>
         <main>
 <%@ include file="./_aside.jsp" %>
+<script>
+$(function(){
+	
+	$('.orderDelete').click(function (e){
+		e.preventDefault;
+		
+		$('#formCheck').submit();
+		
+	})
+	
+	
+})
+
+
+</script>
             <section id="orderList">
                 <nav>
                     <h3>주문목록</h3>
                 </nav>
 
                 <article>
-
+					<form id="formCheck" action="/Farmstory2/admin/delete.do" method="get">
                     <table border="0">
                         <tr>
                             <th><input type="checkbox" name="all"/></th>
@@ -22,9 +37,10 @@
                             <th>주문일</th>
                             <th>확인</th>
                         </tr>
+                       
                         <c:forEach var="order" items="${requestScope.orders }">
                         <tr>
-                            <td><input type="checkbox" name=""/></td>
+                            <td><input type="checkbox" name="chk" value="${order.getOrderno()}"/></td>
                             <td class="orderno">${order.getOrderno() }</td>
                             <td class="pName">${order.getpName() }</td>                            
                             <td class="price">${order.getOrderprice() }</td>
@@ -40,8 +56,9 @@
                             <td class="hidden address">${order.orderaddr1} ${order.orderaddr2}</td>
                         </tr>
                         </c:forEach>
+                        
                     </table>
-
+					</form>
                     <p>
                         <a href="#" class="orderDelete">선택삭제</a>                        
                     </p>

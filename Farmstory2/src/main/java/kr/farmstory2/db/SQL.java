@@ -72,6 +72,7 @@ public class SQL {
 	
 	//UPDATE
 	public static final String UPDATE_ARTICLE="UPDATE `Article` SET `title`=?, content=? where `no`=?";
+	
 	public static final String UPDATE_USEYN_COMMENT="UPDATE `Article` SET `useyn`='N' WHERE `no`=?";
 
 	public static final String UPDATE_USEYN_ORDER="UPDATE `Order` SET `useyn`='N' WHERE `orderno`=?";
@@ -79,6 +80,7 @@ public class SQL {
 	public static final String UPDATE_COMMENT ="UPDATE `Article` SET `content`=? where `no`=?";
 	
 	public static final String UPDATE_VIEW_HIT="UPDATE `Article` SET `hit`=`hit`+1 where `no`=?";
+	
 	public static final String UPDATE_COMMENT_NUM="UPDATE `Article` SET `comment`= (SELECT COUNT(*) FROM ( SELECT * FROM `Article` WHERE `PARENT`=? and USEYN='') tmp_1) where `no`=?";
 	
 	//DELETE
@@ -86,18 +88,25 @@ public class SQL {
 	
 	//new
 	public static final String SELECT_MAX_NO="SELECT MAX(`no`) FROM `Article`";
+	
 	//FIEL
 	public static final String INSERT_FILE="INSERT INTO `File` SET "
 			+ "`ano`=?,"
 			+ "`oriName`=?,"
 			+ "`newName`=?,"
 			+ "`rdate`=NOW()";
-public static final String SELECT_FILE ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE ano=? ";
-public static final String SELECT_FILE2 ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE fno=? ";
-public static final String DELETE_FILE = "DELETE FROM `File` WHERE `ano`=?";
-public final static String SELECT_FILE_SNAMES = "SELECT `newName` FROM `File` WHERE `ano`=?";
 	
-public static final String UPDATE_COUNT_FILE="UPDATE `Article` SET `file`=`file`-1 where `no`=?";
-
-public static final String UPDATE_COUNT_FILE2="UPDATE `Article` SET `file`=`file`+1 where `no`=?";
+	public static final String SELECT_FILE ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE ano=? ";
+	
+	public static final String SELECT_FILE2 ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE fno=? ";
+	
+	public static final String DELETE_FILE = "DELETE FROM `File` WHERE `ano`=?";
+	
+	public final static String SELECT_FILE_SNAMES = "SELECT `newName` FROM `File` WHERE `ano`=?";
+		
+	public static final String UPDATE_COUNT_FILE="UPDATE `Article` SET `file`=`file`-1 where `no`=?";
+	
+	public static final String UPDATE_COUNT_FILE2="UPDATE `Article` SET `file`=`file`+1 where `no`=?";
+	
+	public static final String DELETE_ORDERS = "DELETE FROM `Order` WHERE `orderno`=?";
 }

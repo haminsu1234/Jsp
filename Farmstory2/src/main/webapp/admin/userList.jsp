@@ -8,7 +8,7 @@
                 </nav>
 
                 <article>
-
+					<form id="formUser" action="/Farmstory2/admin/modify.do" method="post">
                     <table border="0">
                         <tr>
                             <th><input type="checkbox" name="all"/></th>
@@ -24,7 +24,7 @@
                         <c:forEach var="user" items="${requestScope.users }">
                        
                         <tr>
-                            <td><input type="checkbox" name=""/></td>
+                            <td><input type="checkbox" name="chk"/></td>
                             <td class="uid">${user.uid }</td>
                             <td class="name">${user.name }</td>                            
                             <td class="nick">${user.nick }</td>
@@ -54,7 +54,7 @@
                         </tr>
                         </c:forEach>
                     </table>
-
+					</form>
                     <p>
                         <a href="#" class="orderDelete">선택수정</a>                        
                     </p>

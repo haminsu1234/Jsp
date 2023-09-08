@@ -90,7 +90,22 @@ public class OrderDAO extends DBHelper {
 		
 	}
 	public void updateOrder() {}
-	public void deleteOrder() {}
+	public void deleteOrder(String orderno) {
+		
+		try {
+			conn=getConnection();
+			psmt=conn.prepareStatement(SQL.DELETE_ORDERS);
+			psmt.setString(1, orderno);
+			psmt.executeUpdate();
+			
+
+			close();
+		} catch (Exception e) {
+			logger.error("selectCountOrderTotal error : "+e.getMessage());
+		}
+		
+		
+	}
 	
 	
 	public int selectCountOrderTotal() {
