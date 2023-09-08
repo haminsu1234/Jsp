@@ -41,4 +41,8 @@ public enum FileService {
 		
 	}
 	
+	public List<String> deleteFiles(String no) {
+		return dao.deleteFiles(no);
+	}
+	
 }

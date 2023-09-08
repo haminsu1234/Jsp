@@ -5,6 +5,7 @@ public class SQL {
 
 	public static final String SELECT_TEMRS = "SELECT * FROM `Terms`";
 	public static final String SELECT_USER="SELECT * FROM `User` WHERE `UID`=? AND `PASS`=SHA2(?,256)";
+	public static final String SELECT_USERS="SELECT * FROM `User` limit ? ,10";
 	
 	public static final String SELECT_ARTICLES="SELECT * FROM `Article` AS a "
 												+ "INNER JOIN `User` AS b"
@@ -12,6 +13,7 @@ public class SQL {
 												+ "	WHERE useyn ='Y' and cate =? "
 												+ " order by `no` DESC"
 												+ " limit ? ,10";
+	public static final String SELECT_ARTICLES_LATE="SELECT `no`,`title`,`rdate` FROM `Article` where `cate`=? order by `no` DESC LIMIT ?";
 											
 	public static final String SELECT_COUNT_TOTAL= "SELECT COUNT(*) FROM `Article` WHERE cate=? AND useyn='Y'";
 	
@@ -19,6 +21,7 @@ public class SQL {
 	public static final String SELECT_COUNT_NICK="SELECT COUNT(*) FROM `User` WHERE `nick`=?";
 	public static final String SELECT_COUNT_HP="SELECT COUNT(*) FROM `User` WHERE `hp`=?";
 	public static final String SELECT_COUNT_EMAIL="SELECT COUNT(*) FROM `User` WHERE `email`=?";
+	public static final String SELECT_COUNT_USER_TOTAL="SELECT COUNT(*) FROM `User`";
 	
 	public static final String SELECT_COUNT_ORDER= "SELECT COUNT(*) FROM `Order` WHERE `USEYN`='Y'";
 	public static final String SELECT_ORDER= "SELECT * FROM `Order` WHERE `orderno`=?";
@@ -91,7 +94,8 @@ public class SQL {
 			+ "`rdate`=NOW()";
 public static final String SELECT_FILE ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE ano=? ";
 public static final String SELECT_FILE2 ="SELECT `oriName`,`newName`,`download` FROM `File` WHERE fno=? ";
-public static final String DELETE_FILE = "DELETE FROM `File` WHERE `ano`=?";	
+public static final String DELETE_FILE = "DELETE FROM `File` WHERE `ano`=?";
+public final static String SELECT_FILE_SNAMES = "SELECT `newName` FROM `File` WHERE `ano`=?";
 	
 public static final String UPDATE_COUNT_FILE="UPDATE `Article` SET `file`=`file`-1 where `no`=?";
 

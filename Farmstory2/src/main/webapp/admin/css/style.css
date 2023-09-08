@@ -222,10 +222,6 @@ footer > p {
     box-sizing: border-box;
 }
 
-#orderList .hidden{
-	display: none;
-}
-
 #orderList .paging {
     text-align: center;
 }
@@ -233,6 +229,10 @@ footer > p {
 #orderList .paging > .on {
     font-weight: bold;
     text-decoration: underline;
+}
+
+#orderList .hidden{
+	display: none;
 }
 
 #orderPopup {
@@ -298,6 +298,11 @@ footer > p {
     border-bottom: 1px dotted #999;
 }
 
+#orderPopup .thumb1 > img{
+	width: 120px;
+	height: 120px;
+}
+
 #orderPopup .btnClose {
     position: absolute;
     right: 10px;
@@ -310,6 +315,7 @@ footer > p {
     border: 0;
     cursor: pointer;
 }
+
 
 /* 회원관리 */        
 #userPopup {

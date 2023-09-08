@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.JsonObject;
 
 import kr.co.farmstory2.dto.ArticleDTO;
+import kr.co.farmstory2.dto.FileDTO;
 import kr.co.farmstory2.dto.UserDTO;
 import kr.co.farmstory2.service.ArticleService;
 import kr.co.farmstory2.service.FileService;
@@ -46,30 +47,36 @@ public class DeleteController extends HttpServlet {
 		String onlyfile = req.getParameter("onlyfile");
 		// onlyfile 값이 있을경우에만 파일만(중요) 삭제함 왜냐? onlyfile에 값이 들어오는경우는 modify에서 파일수정할때 말고는 없기때문 
 		if(onlyfile != null) {
-			int result =service2.deleteFile(no);
-				
-			if(result > 0) {
+			List<String> newName =service2.deleteFiles(no);
+			
+			logger.info("newName : "+newName);
+			if(newName != null) {
 			service.updateCountFile(no);
 			String path = service.getUploadPath(req);
-			
-			File file = new File(path+"/"+"파일명");
+			logger.info("newName : "+path);
+			for(String newNames : newName) {
+			File file = new File(path+"/"+newNames);
 			
 			if(file.exists()) {
 				file.delete();	
 			}
+			}
 			resp.sendRedirect("/Farmstory2/board/modify.do?group="+group+"&cate="+cate+"&no="+no);
 			}
 		}else if (onlyfile==null){ // onlyfile 값이 null 일경우에는 view -> delete 이기떄문에 게시글까지 삭제하는것
-			int result =service2.deleteFile(no);
+			List<String> newName =service2.deleteFiles(no);
 			service.deleteArticle(no);
-			if(result > 0) {
+			logger.info("newName : "+newName);
+			if(newName != null) {
 			String path = service.getUploadPath(req);
 			
-			File file = new File(path+"/"+"파일명");
+			for(String newNames : newName) {
+			File file = new File(path+"/"+newNames);
 			
 				if(file.exists()) {
 					file.delete();	
 				}
+			}
 			}
 			resp.sendRedirect("/Farmstory2/board/list.do?group="+group+"&cate="+cate);
 		}

@@ -1,5 +1,6 @@
 package kr.co.farmstory2.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -107,6 +108,31 @@ public class FileDAO extends DBHelper {
 		return result;
 	}
 	
+	public List<String> deleteFiles(String ano) {
+		List<String> newName = new ArrayList<String>();
+		
+		try {
+			conn = getConnection(); 
+			psmt = conn.prepareStatement(SQL.SELECT_FILE_SNAMES);
+			psmt.setString(1, ano);
+			
+			psmt1 = conn.prepareStatement(SQL.DELETE_FILE);
+			psmt1.setString(1, ano);
+			
+			rs = psmt.executeQuery();
+			psmt1.executeUpdate();
+			
+			while(rs.next()) {
+				newName.add(rs.getString(1));
+			}
+			
+			close();
+		}catch (Exception e) {
+			logger.error("deleteFile - " + e.getMessage());
+		}
+		
+		return newName;
+	}
 	
 	
 }

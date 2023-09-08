@@ -38,6 +38,11 @@ public enum ArticleService {
 		return dao.selectArticles(start, cate);
 	}
 	
+	public List<ArticleDTO> selectArticlesLatest(String cate, int lateNum) {
+		return dao.selectArticlesLatest(cate, lateNum);
+	}
+	
+	
 	public int insertArticle(ArticleDTO dto) {
 		return dao.insertArticle(dto);
 	}

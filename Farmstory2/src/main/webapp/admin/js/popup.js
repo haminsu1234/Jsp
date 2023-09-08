@@ -49,6 +49,32 @@
 
             $('.showPopup').click(function(e){
                 e.preventDefault();
+                const tr=$(this).parent().parent();
+      
+                
+                const uid=tr.find('.uid').text();
+                const name=tr.find('.name').text();
+                const nick=tr.find('.nick').text();
+                const email=tr.find('.email').text();
+                const hp=tr.find('.hp').text();
+                const grade=tr.find('.grade').text();
+                const regDate=tr.find('.regDate').text();
+                const regip=tr.find('.regip').text();
+                const addr1=tr.find('.addr1').text();
+                const addr2=tr.find('.addr2').text();
+                
+                const poup =$('#userPopup'); //원래는 popup인데 아래 text추가부분에서 오타를내서 그냥 const를 poup로 고침...
+                poup.find('.useruid').text(uid);
+                poup.find('.username').text(name);
+                poup.find('.usernick').text(nick);
+                poup.find('.useremail').text(email);
+                poup.find('.userhp').text(hp);
+                poup.find('.usergrade').text(grade);
+                poup.find('.userregDate').text(regDate);
+                poup.find('.userregip').text(regip);
+                poup.find('.useraddr1').text(addr1);
+                poup.find('.useraddr2').text(addr2);
+   
                 $('#userPopup').show();
             });
 

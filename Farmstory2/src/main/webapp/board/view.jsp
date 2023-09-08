@@ -64,18 +64,38 @@
 			});
 		*/// 이렇게하면 실행자체는 되긴하는데 화면에 즉각적인 반응이 안옴 새로고침해야지 삭제되었는지 알수있음 
 		
-		//댓글수정
+		//댓글수정//댓글을 하나수정중일 떄 다른 댓글 수정막는건 강사님코드 들고옴 와 js 진짜 하기싫다 
+		//
 		$('.mod').click(function(e){
 			e.preventDefault();
-			
+			const article  = e.target.parentNode.closest('article');//이벤트 타겟의 부모 노드로 이동하여 가장 가까운 article 요소를 찾는 코드
 			const txt = $(this).text();
-			
+			const modifying = document.getElementsByClassName('modifying')[0];
 			if(txt == '수정'){
 				$(this).parent().prev().addClass('modi');
 				$(this).parent().prev().attr('readonly', false);
 				$(this).parent().prev().focus();
 				$(this).text('수정완료');
 				$(this).prev().show();
+				article.classList.add('modifying'); //이벤트 타겟의 부모 노드로 이동하여 가장 가까운 article 요소에 modifying 을 부여  modifiying에 값이 있으면 readonly 속성부여해서 수정불가하게 함 
+				
+				if(modifying != null){						 
+					const modifyingTextarea = modifying.getElementsByTagName('textarea')[0];
+					const modifyingRemove = modifying.getElementsByClassName('remove')[0];
+					const modifyingCancel = modifying.getElementsByClassName('cancel')[0];
+					const modifyingModify = modifying.getElementsByClassName('modify')[0];
+					
+					modifyingTextarea.style.border = 'none';
+					modifyingTextarea.style.background = 'none';
+					modifyingTextarea.readOnly = true;
+					
+					modifyingRemove.style.display = 'inline';
+					modifyingCancel.style.display = 'none';
+					modifyingModify.innerText = '수정';
+					
+					modifying.classList.remove('modifying');
+				}
+				
 			}else{
 				// 수정완료 클릭
 				if(confirm('정말수정하시겠습니까')){

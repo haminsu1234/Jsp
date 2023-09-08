@@ -8,17 +8,19 @@
 <head>
     <meta charset="UTF-8">
     <title>팜스토리::로그인</title>    
-    <link rel="stylesheet" href="/Farmstory2/user/css/style.css"/>
-     <link rel="stylesheet" href="/Farmstory2/css/style.css"/>
+
      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"/>
+     <link rel="stylesheet" href="/Farmstory2/css/style.css"/>
+    <link rel="stylesheet" href="/Farmstory2/user/css/style.css"/>
+    
    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <script src="/Farmstory2/js/timeout.js"></script>  
-    <script src="/Farmstory2/js/validation.js"></script>  
+	  <script src="/Farmstory2/js/validation.js"></script>  
     <script src="/Farmstory2/js/zipcode.js"></script>  
     <script src="/Farmstory2/js/checkUser.js"></script>  
     <!-- 
@@ -40,15 +42,15 @@
           $('#tabs').tabs();
       });
       
+  	/*const success = ${success};
+	
+	if(success == 100){
+		alert('로그인에 실패 했습니다. 아이디, 비번을 다시 확인하시기 바랍니다.');
+	}else if(success == 101){
+		alert('로그인을 먼저 하셔야 합니다.');    		
+	} */ 
       
-      
-    	const success = ${success};
-    	
-    	if(success == 100){
-    		alert('로그인에 실패 했습니다. 아이디, 비번을 다시 확인하시기 바랍니다.');
-    	}else if(success == 101){
-    		alert('로그인을 먼저 하셔야 합니다.');    		
-    	}    
+  
     </script>
 
 </head>

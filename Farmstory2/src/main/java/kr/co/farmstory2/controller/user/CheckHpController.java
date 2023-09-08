@@ -42,14 +42,14 @@ public class CheckHpController extends HttpServlet{
 		String hp = req.getParameter("hp");
 
 
-		int result3 =service.selectCountHp(hp);
+		int result4 =service.selectCountHp(hp);
 
 
-		logger.info("result3 : "+result3);
+		logger.info("result3 : "+result4);
 
 		JsonObject json = new JsonObject();
 
-		json.addProperty("result3", result3);
+		json.addProperty("result4", result4);
 
 		
 		// Json 출력

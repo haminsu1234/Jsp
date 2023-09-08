@@ -78,7 +78,7 @@
                     <h3>기본정보</h3>
                     <table border="0">
                         <tr>
-                            <td rowspan="7" class="thumb"><img src="./images//sample_item1.jpg" alt="사과 500g"></td>
+                            <td rowspan="7" class="thumb1"><img src="./images//sample_item1.jpg" alt="사과 500g"></td>
                             <td>상품번호</td>
                             <td class="orderProduct">상품번호</td>
                         </tr>

@@ -21,63 +21,38 @@
                             <th>가입일</th>
                             <th>확인</th>
                         </tr>
+                        <c:forEach var="user" items="${requestScope.users }">
+                       
                         <tr>
                             <td><input type="checkbox" name=""/></td>
-                            <td>a101</td>
-                            <td>김유신</td>                            
-                            <td>유신101</td>
-                            <td>yusin101@naver.com</td>
-                            <td>010-1234-1001</td>
+                            <td class="uid">${user.uid }</td>
+                            <td class="name">${user.name }</td>                            
+                            <td class="nick">${user.nick }</td>
+                            <td class= "email">${user.email }</td>
+                            <td class= "hp">${user.hp }</td>
                             <td>
-                                <select name="grade">
-                                    <option>1</option>
-                                    <option selected>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                            <!--  이부분에서 생각해봐야할것 
+                            
+                            	지금 현재 선택한 값이 상세정보 확인 (팝업창) 띄우는데서 들어가는게 아님
+                            	팝업창은 현재 db에 저장되어 있는 값이 들어가는 거임
+                            
+                            
+                             -->
+                                <select  name="grade">
+                                    <option ${ user.role eq 'admin' ? 'selected class="grade"':''}>admin</option>
+                                    <option ${ user.role eq 'USER' ? 'selected class="grade"':''} >USER</option>
+                                    <option ${ user.role eq 'seller' ? 'selected class="grade"':''}>seller</option>
+                                    <option ${ user.role eq 'unkown' ? 'selected class="grade"':''}>unkown</option>
+                                    <option ${ user.role eq 'unkown' ? 'selected class="grade"':''}>unkown2</option>
                                 </select>
                             </td>
-                            <td>2023-01-01 13:06:14</td>
+                            <td class="regDate">${user.regDate }</td>
+                            <td class="hidden regip">${user.regip }</td>
+                            <td class="hidden addr1">${user.addr1} </td>
+                            <td class="hidden addr2">${user.addr2}</td>
                             <td><a href="#" class="showPopup">[상세확인]</a></td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox" name=""/></td>
-                            <td>a102</td>
-                            <td>김춘추</td>                            
-                            <td>춘추102</td>
-                            <td>chunchu102@naver.com</td>
-                            <td>010-1234-1002</td>
-                            <td>
-                                <select name="grade">
-                                    <option>1</option>
-                                    <option selected>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </td>
-                            <td>2023-01-02 13:06:14</td>
-                            <td><a href="#" class="showPopup">[상세확인]</a></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" name=""/></td>
-                            <td>a103</td>
-                            <td>장보고</td>                            
-                            <td>보고103</td>
-                            <td>bogo103@naver.com</td>
-                            <td>010-1234-1003</td>
-                            <td>
-                                <select name="grade">
-                                    <option>1</option>
-                                    <option selected>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </td>
-                            <td>2023-01-03 13:06:14</td>
-                            <td><a href="#" class="showPopup">[상세확인]</a></td>
-                        </tr>
+                        </c:forEach>
                     </table>
 
                     <p>
@@ -85,13 +60,20 @@
                     </p>
                     
                     <p class="paging">
-                        <a href="#"><</a>
-                        <a href="#" class="on">[1]</a>
-                        <a href="#">[2]</a>
-                        <a href="#">[3]</a>
-                        <a href="#">[4]</a>
-                        <a href="#">[5]</a>
-                        <a href="#">></a>
+	        			<c:if test="${pageGroupStart > 1 }">
+	                    <a href="/Farmstory2/admin/orderList.do?pg=1" class="prev">처음으로</a>
+	                    <a href="/Farmstory2/admin/orderList.do?pg=${pageGroupStart -1}" class="prev">이전</a>
+						</c:if>
+	               
+						<c:forEach var="i" begin="${pageGroupStart}" end="${pageGroupEnd}" >               
+	                    <a href="/Farmstory2/admin/orderList.do?pg=${i}" class="num ${currentPage==i ? 'current':''}">${i}</a>
+	                    </c:forEach>
+						
+						<c:if test="${pageGroupEnd < lastPageNum }">
+	                    <a href="/Farmstory2/admin/orderList.do?pg=${pageGroupEnd +1 }" class="next">다음</a>
+	                    <a href="/Farmstory2/admin/orderList.do?pg=${lastPageNum}" class="next">마지막으로</a>
+	              		</c:if>
+
                     </p>
                 </article>
             </section>
@@ -110,46 +92,46 @@
                     <table border="0">
                         <tr>
                             <td>아이디</td>
-                            <td>a101</td>
+                            <td class="useruid">a101</td>
                         </tr>
                         <tr>
                             <td>이름</td>
-                            <td>김유신</td>
+                            <td class="username">김유신</td>
                         </tr>
                         <tr>
                             <td>별명</td>
-                            <td>유신101</td>
+                            <td class="usernick">유신101</td>
                         </tr>
                         <tr>
                             <td>이메일</td>
-                            <td>yusin101@naver.com</td>
+                            <td class="useremail">yusin101@naver.com</td>
                         </tr>
                         <tr>
                             <td>휴대폰</td>
-                            <td>010-1234-1001</td>
+                            <td class="userhp">010-1234-1001</td>
                         </tr>
                         <tr>
                             <td>등급</td>
-                            <td>2등급(준회원)</td>
+                            <td class="usergrade">2등급(준회원)</td>
                         </tr>
                         <tr>
                             <td>주소</td>
                             <td>
-                                <p>
+                                <p class="useraddr1">
                                     부산광역시 부산진구 대연동 120
                                 </p>
-                                <p>
+                                <p class="useraddr2">
                                     한빛빌딩 10층
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td>아이피</td>
-                            <td>192.168.10.112</td>
+                            <td class="userregip">192.168.10.112</td>
                         </tr>
                         <tr>
                             <td>회원가입일</td>
-                            <td>2023-01-01 13:06:14</td>
+                            <td class="userregDate">2023-01-01 13:06:14</td>
                         </tr>
                     </table>
                 </article>

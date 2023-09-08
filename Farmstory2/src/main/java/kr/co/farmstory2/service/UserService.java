@@ -20,8 +20,8 @@ public enum UserService {
 	public UserDTO selectUser(String uid, String pass) {
 		return dao.selectUser(uid,pass);
 	}
-	public List<UserDTO> selectUsers(String start, String cate) {
-		return null;
+	public List<UserDTO> selectUsers(int start) {
+		return dao.selectUsers(start);
 	}
 	public void deleteUser() {}
 	public void updateUser(UserDTO dto) {}
@@ -44,6 +44,10 @@ public enum UserService {
 
 	public int selectCountTotal(String cate) {
 		return dao.selectCountTotal(cate);
+	}
+	
+	public int selectCountUserTotal() {
+		return dao.selectCountUserTotal();
 	}
 	
 	

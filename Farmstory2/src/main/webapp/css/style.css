@@ -318,7 +318,6 @@ main > .info > div > .account {
     color: #666;
 }
 
-
 /* 서브페이지 공통 */
 #sub {
     width: 100%;
@@ -486,7 +485,6 @@ main > .info > div > .account {
 }
 #sub > .market > .list > .paging > .on {
     color: #111;
-    background-color: #bebebe;
     text-decoration: underline;
 }
 

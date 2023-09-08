@@ -1,6 +1,7 @@
 package kr.co.farmstory2.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -85,8 +86,37 @@ public class UserDAO extends DBHelper{
 		
 		return dto;
 	}
-	public List<UserDTO> selectUsers(String start,String cate) {
-		return null;
+	public List<UserDTO> selectUsers(int start) {
+		List<UserDTO> users = new ArrayList<>();
+		
+		try {
+			conn=getConnection();
+			psmt=conn.prepareStatement(SQL.SELECT_USERS);
+			psmt.setInt(1, start);
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				UserDTO dto = new UserDTO();
+				dto.setUid(rs.getString(1));
+				dto.setPass(rs.getString(2));
+				dto.setName(rs.getString(3));
+				dto.setNick(rs.getString(4));
+				dto.setEmail(rs.getString(5));
+				dto.setHp(rs.getString(6));
+				dto.setRole(rs.getString(7));
+				dto.setZip(rs.getString(8));
+				dto.setAddr1(rs.getString(9));
+				dto.setAddr2(rs.getString(10));
+				dto.setRegip(rs.getString(11));
+				dto.setRegDate(rs.getString(12));
+				dto.setLeaveDate(rs.getString(13));
+				users.add(dto);
+			}
+		} catch (Exception e) {
+			logger.error("selectUsers error : "+e.getMessage());
+		}
+		
+		return users;
 		
 	}
 	public void deleteUser() {}
@@ -191,6 +221,25 @@ public class UserDAO extends DBHelper{
 			psmt=conn.prepareStatement(SQL.SELECT_COUNT_TOTAL);
 			psmt.setString(1, cate);
 			
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
+				total=rs.getInt(1);
+			}
+			
+			
+		} catch (Exception e) {
+			logger.error("selectCountTotal error : "+e.getMessage());
+		}
+		
+		return total;
+	}
+	
+	public int selectCountUserTotal() {
+		int total=0;
+		try {
+			conn=getConnection();
+			psmt=conn.prepareStatement(SQL.SELECT_COUNT_USER_TOTAL);
 			rs=psmt.executeQuery();
 			
 			if(rs.next()) {
